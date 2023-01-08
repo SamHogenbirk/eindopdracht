@@ -1,9 +1,13 @@
 import React from 'react';
+import PieChart from './components/Chart';
 import './App.css';
+
 
 function App() {
   return (
-   <p>test</p>
+    <div>
+      <PieChart />
+    </div>
   )
 }
 
