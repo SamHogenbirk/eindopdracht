@@ -1,13 +1,31 @@
-import PieChart from "./PieChart";
+import PieChart from "../components/PieChart"
+import BarChart from "../components/BarChart"
 import { useState } from "react";
 import { Data } from "../app/Data";
 
 
-console.log(Data)
+
 
 export default function Chart() {
 
-    const [chartData, setChartData] = useState({
+    const [barData, setBarData] = useState({
+
+        label: Data.map((data) => data.year),
+        datasets: [
+            {
+                label: Data.map(data => data.year),
+                data: Data.map((data) => data.userGain),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+
+                ],
+
+                borderWidth: 1
+            }]
+    })
+    console.log(barData)
+
+    const [pieData, setPieData] = useState({
         label: Data.map((data) => data.year),
         datasets: [
             {
@@ -28,7 +46,8 @@ export default function Chart() {
 
     return (
         <div >
-            <PieChart chartData={chartData} />
+            <PieChart chartData={pieData} />
+            <BarChart chartData={barData} />
         </div>
     )
 

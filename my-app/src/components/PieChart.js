@@ -1,13 +1,14 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2'
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 function PieChart({ chartData }) {
     return (
-        <div>
+        <div className="pie-chart">
             <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
             <Pie
                 data={chartData}
