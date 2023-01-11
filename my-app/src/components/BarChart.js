@@ -1,32 +1,15 @@
 import React from "react";
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2'
 
+function BarChart({ barOptions, chartData }) {
 
-
-
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top',
-        },
-        title: {
-            display: true,
-            text: 'Chart.js Bar Chart',
-        },
-    },
-};
-
-
-function BarChart({ chartData }) {
-    console.log(chartData)
     return (
         <div className="bar-chart">
-            <h2 style={{ textAlign: "center" }}>bar Chart</h2>
+            <h2 className="chart-title" >Anual userGain vs userLost</h2>
             <Bar
                 data={chartData}
-                options={{ options }}
+                options={{ barOptions }}
             />
         </div>
     );
