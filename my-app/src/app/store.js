@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import listReducer from '../features/listSlice';
+import DataReducer from '../features/DataSlice';
 
-export const store = configureStore({
+export const Store = configureStore({
   reducer: {
-    list: listReducer,
+    data: DataReducer,
+
   },
 });

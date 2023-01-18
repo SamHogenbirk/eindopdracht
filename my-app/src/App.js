@@ -1,19 +1,20 @@
 import React from 'react';
-import PieChart from './features/chartData'
-import BarChart from './features/chartData'
-
-
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import LineChart from "./components/LineChart"
+import BarChart from "./components/BarChart"
+import Test from "./components/Test"
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 
 function App() {
   return (
-    <Router>
-      {/* <LineChart /> */}
-      <BarChart />
-    </Router >
+    <div>
+      <Routes>
+        <Route path="/" element={<BarChart />} />
+        {/* <Test /> */}
+        {/* <LineChart /> */}
+      </Routes>
+    </div>
   )
 }
 

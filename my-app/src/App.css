@@ -2,17 +2,11 @@
   text-align: center;
 }
 
-.bar-chart{
-  height: 400px;
-  width: auto;
-  padding: 15px;
-}
-
-.line-chart{
-  height: 400px;
-  width: auto;
-  padding: 15px;
-
+.chart{
+  margin: 0px;
+  height: auto;
+  width: 100%;
+  padding: 5px;
 }
 
 .chart-title{
@@ -21,6 +15,8 @@
   padding: 5px;
   text-align: center;
 }
+
+
 
 
 
