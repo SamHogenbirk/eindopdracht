@@ -1,8 +1,19 @@
+import React from 'react'
+import ListItem from './ListItem'
 
-const StudentList = () => {
+
+const StudentList = (props) => {
+
+    const id = () => {
+        return parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
+    }
 
     return (
-        <p>StudentList</p>
+        <div>
+            <ul className='dropdown-content'>
+                {props.data.map((item) => <ListItem key={id()} data={item} />)}
+            </ul>
+        </div>
     )
 
 }

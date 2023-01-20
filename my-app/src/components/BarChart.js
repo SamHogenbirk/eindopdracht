@@ -2,35 +2,35 @@ import React from "react"
 import Chart from "chart.js/auto"
 import { Bar } from 'react-chartjs-2'
 
-function BarChart(data) {
+function BarChart(props) {
 
     const barOptions = {
         responsive: true,
         plugins: {
             title: {
                 display: true,
-                text: data.props.title
+                text: props.data.title
             }
         }
     }
 
     const barData =
     {
-        labels: data.props.horizontalArray, //horizontal axis
+        labels: props.data.horizontalArray, //horizontal axis
 
         datasets: [
             {
                 label: "Difficulty Rating ",
-                data: data.props.verticalArrayDifficulty, //vertical axis
-                backgroundColor: data.props.verticalArrayDifficulty
+                data: props.data.verticalArrayDifficulty, //vertical axis
+                backgroundColor: props.data.verticalArrayDifficulty
                     .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
 
                 borderWidth: 1
             },
             {
                 label: "Fun Rating",
-                data: data.props.verticalArrayFun, //vertical axis
-                backgroundColor: data.props.verticalArrayFun
+                data: props.data.verticalArrayFun, //vertical axis
+                backgroundColor: props.data.verticalArrayFun
                     .map(item => item < 2 ? "red" : "rgb(182, 245, 66)"),
 
                 borderWidth: 1

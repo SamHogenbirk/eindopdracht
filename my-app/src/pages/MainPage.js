@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import BarChart from "../components/BarChart"
 import { useState } from "react"
-
+import StudentList from "../components/StudentList"
 
 const MainPage = () => {
 
@@ -43,7 +43,7 @@ const MainPage = () => {
             return averageRating
 
         })
-        return RatingPerStudent
+        return RatingPerStudent.map(item => Math.round(item * 10) / 10)
     }
 
     const funRatingStudent = AverageRatingByStudent(data, "fun")
@@ -82,21 +82,41 @@ const MainPage = () => {
 
     return (
 
-
         <div className="chart-wrapper" >
             <div className="radio">
                 <label>
-                    <label> assignment<input defaultChecked="checked" onChange={handleChange} type="radio" id="assignment" name="data" value="assignment"></input></label>
-                    <label>Student:<input onChange={handleChange} type="radio" id="student" name="data" value="student"></input>    </label>
+                    <label> Assignment:
+                        <input
+                            defaultChecked="checked"
+                            onChange={handleChange}
+                            type="radio"
+                            name="data"
+                            value="assignment">
+                        </input>
+                    </label>
+                    <label> Student:
+                        <input
+                            onChange={handleChange}
+                            type="radio"
+                            name="data"
+                            value="student">
+                        </input>
+                    </label>
                 </label>
             </div>
 
-            <BarChart props={{
+
+        
+            <div className="dropdown">
+                <span className="tag">List</span>
+                <StudentList data={studentArray} />
+            </div>
+
+            <BarChart data={{
                 title,
                 horizontalArray,
                 verticalArrayDifficulty,
                 verticalArrayFun,
-
             }} />
 
         </div>
