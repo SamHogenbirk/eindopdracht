@@ -9,8 +9,8 @@ const StudentList = (props) => {
     }
 
     return (
-        <div>
-            <ul className='dropdown-content'>
+        <div className='dropdown-content'>
+            <ul >
                 {props.data.map((item) => <ListItem key={id()} data={item} />)}
             </ul>
         </div>
