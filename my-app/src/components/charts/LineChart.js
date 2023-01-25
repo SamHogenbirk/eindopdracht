@@ -6,22 +6,33 @@ import { Line } from 'react-chartjs-2'
 
 function LineChart(props) {
 
-    const lineOptions = {
+    const options = {
         responsive: true,
         plugins: {
             display: true,
             legend: {
-                fillStyle: "rgb(66, 135, 245)",
+                // fillStyle: "rgb(66, 135, 245)",
                 onClick: (e, legendItem, legend) => {
 
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
                     legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)
                 },
+                labels: {
+                    generateLabels: (chart) => {
+                        return chart.data.datasets.map((dataset, i) => ({
+                            text: dataset.label,
+                            strokeStyle: "white",
+                            fillStyle: dataset.backgroundColor,
+                            hidden: !chart.isDatasetVisible(i),
+                            lineCap: dataset.borderCapStyle,
+                        }))
+                    },
 
-                title: {
-                    display: false,
-                    text: props.data.title
+                    title: {
+                        display: false,
+                        text: props.data.title
+                    }
                 }
             }
         }
@@ -34,7 +45,7 @@ function LineChart(props) {
         datasets: [
 
             {
-                label: "difficulty",
+                label: "Difficulty rating",
                 data: props.data.verticalArrayDifficulty,
                 fill: false,
                 borderColor: "rgb(66, 135, 245)",
@@ -42,7 +53,7 @@ function LineChart(props) {
                 tension: 0.2
             },
             {
-                label: "fun",
+                label: "Fun rating",
                 data: props.data.verticalArrayFun,
                 fill: false,
                 borderColor: "rgb(182, 245, 66)",
@@ -54,10 +65,10 @@ function LineChart(props) {
 
     return (
         <div className="chart" >
-            <h2 className="chart-title">{lineOptions.plugins.legend.title.text}</h2>
+            <h2 className="chart-title">{options.plugins.legend.labels.title.text}</h2>
             <Line
                 data={lineData}
-                options={lineOptions}
+                options={options}
             />
         </div >
     );

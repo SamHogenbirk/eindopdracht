@@ -7,6 +7,7 @@ const RadioButton = ({ handleChange }) => {
         <>
             <div className="radio-button">
                 <label> Average per:
+
                     <label> Assignment:
                         <input
                             defaultChecked="checked"
@@ -16,15 +17,16 @@ const RadioButton = ({ handleChange }) => {
                             value="assignment">
                         </input>
                     </label>
+
                     <label> Student:
                         <input
-
                             onChange={handleChange}
                             type="radio"
                             name="data"
                             value="student">
                         </input>
                     </label>
+                    
                 </label>
             </div>
         </>

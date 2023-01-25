@@ -68,23 +68,28 @@ const MainPage = () => {
         const barChart = document.querySelector(".bar-chart")
         const lineChart = document.querySelector(".line-chart")
 
+
         if (barChart.style.display === "none") {
             barChart.style.display = "block"
             lineChart.style.display = "none"
+
+
         } else {
             barChart.style.display = "none"
             lineChart.style.display = "block"
+
+
         }
     }//switch chart
 
     return (
         <>
             <Navbar data={category("studentName")} />
+
             <div className="chart-wrapper" >
-
                 <RadioButton handleChange={handleChange} />
-
-                <button className="chart-button" onClick={handleClick}>switch chart</button>
+                
+                <button className="chart-button" onClick={handleClick}> switch chart</button>
 
                 <div className="bar-chart">
                     <BarChart data={{

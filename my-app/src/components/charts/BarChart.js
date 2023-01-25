@@ -25,8 +25,10 @@ function BarChart(props, handleClick) {
                 labels: {
 
                     generateLabels: (chart) => {
+
                         return chart.data.datasets.map((dataset, i) => ({
                             text: dataset.label,
+                            strokeStyle: "white",
                             fillStyle: dataset.backgroundColor[i] === "red" ? "rgb(66, 135, 245)" : dataset.backgroundColor[i],
                             hidden: !chart.isDatasetVisible(i),
                             lineCap: dataset.borderCapStyle,
@@ -50,7 +52,7 @@ function BarChart(props, handleClick) {
 
         datasets: [
             {
-                label: "Difficulty Rating ",
+                label: "Difficulty rating",
                 data: props.data.verticalArrayDifficulty, //vertical axis
                 backgroundColor: props.data.verticalArrayDifficulty
                     .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
@@ -61,7 +63,7 @@ function BarChart(props, handleClick) {
                 borderRadius: 10,
             },
             {
-                label: "Fun Rating",
+                label: "Fun rating",
                 data: props.data.verticalArrayFun, //vertical axis
                 backgroundColor: props.data.verticalArrayFun
                     .map(item => item < 2 ? "red" : "rgb(182, 245, 66)"),

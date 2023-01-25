@@ -7,8 +7,12 @@ const Navbar = (props) => {
         <>
             <div className="navbar">
                 <div className="dropdown">
-                    <span className="tag">List</span>
-                    <StudentList data={props.data} />
+                    <button className="dropbtn">List
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                    <div className="dropdown-content">
+                        <StudentList data={props.data} />
+                    </div>
                 </div>
             </div>
         </>

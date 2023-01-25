@@ -1,0 +1,41 @@
+@import "./navbar";
+@import "./charts";
+
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-button {
+  margin: auto;
+  width: fit-content;
+  padding: 5px;
+
+}
+
+ul {
+  padding: 0px 3px 5px 3px;
+  margin-top: 0px;
+  width: fit-content;
+  list-style-type: none;
+}
+
+.li-item {
+  display: inline-block;
+  width: 100%;
+  padding: 13px;
+  margin: 0px;
+}
