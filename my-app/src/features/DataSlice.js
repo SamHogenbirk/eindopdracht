@@ -8,6 +8,9 @@ const DataSlice = createSlice({
     name: "data",
     initialState,
     reducers: {
+
+        addStudent: (state, action) => { },
+        removeStudent: (state, action) => { },
     }
 })
 

@@ -1,0 +1,66 @@
+import React from "react"
+import Chart from 'chart.js/auto'
+import { Line } from 'react-chartjs-2'
+
+
+
+function LineChart(props) {
+
+    const lineOptions = {
+        responsive: true,
+        plugins: {
+            display: true,
+            legend: {
+                fillStyle: "rgb(66, 135, 245)",
+                onClick: (e, legendItem, legend) => {
+
+                    const data = legend.legendItems.map(item => item.text)
+                    const index = data.indexOf(legendItem.text)
+                    legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)
+                },
+
+                title: {
+                    display: false,
+                    text: props.data.title
+                }
+            }
+        }
+    }
+
+    const lineData = {
+
+        labels: props.data.horizontalArray,
+
+        datasets: [
+
+            {
+                label: "difficulty",
+                data: props.data.verticalArrayDifficulty,
+                fill: false,
+                borderColor: "rgb(66, 135, 245)",
+                backgroundColor: "rgb(66, 135, 245)",
+                tension: 0.2
+            },
+            {
+                label: "fun",
+                data: props.data.verticalArrayFun,
+                fill: false,
+                borderColor: "rgb(182, 245, 66)",
+                backgroundColor: "rgb(182, 245, 66)",
+                tension: 0.2
+            }
+        ]
+    }
+
+    return (
+        <div className="chart" >
+            <h2 className="chart-title">{lineOptions.plugins.legend.title.text}</h2>
+            <Line
+                data={lineData}
+                options={lineOptions}
+            />
+        </div >
+    );
+}
+
+export default LineChart;

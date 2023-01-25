@@ -1,125 +1,110 @@
 import React from "react"
+import BarChart from "../components/charts/BarChart"
+import RadioButton from "../components/RadioButton"
+import Navbar from "../components/Navbar"
+import LineChart from "../components/charts/LineChart"
 import { useSelector } from "react-redux"
-import BarChart from "../components/BarChart"
 import { useState } from "react"
-import StudentList from "../components/StudentList"
+// import { uniqueArray } from "../features/FilterSlice"
+// import { useDispatch } from "react-redux"
+
 
 const MainPage = () => {
 
     const data = useSelector((state) => state.data.StudentData)
 
-    const assignmentArray = [...new Set(data.map(item => item.assignment))]
-    const studentArray = [...new Set(data.map(item => item.studentName))]
+    let category = (input) => [...new Set(data.map(item => item[input]))]
 
-    const AverageRatingByAssignment = (data, input) => {
+    const AverageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
 
-        const averageRatingPerAssigntment = assignmentArray.map((assignment) => {
+        const averageRating = category(inputB).map((item) => {
 
-            const ratingPerAssignment =
-                data.filter((data) => data.assignment === assignment)
-                    .map((data) => data[input])
+            const ratingPerInput =
+                data.filter((data) => data[inputB] === item)
+                    .map((data) => data[inputA])
 
-            const averageRating = ratingPerAssignment.reduce((a, b) => a + b) / ratingPerAssignment.length
-
-            return averageRating
-
-        })
-        return averageRatingPerAssigntment
-    }
-
-    const funRatingAssignment = AverageRatingByAssignment(data, "fun")
-    const difficultyRatingAssignment = AverageRatingByAssignment(data, "difficulty")
-
-    const AverageRatingByStudent = (data, input) => {
-
-        const RatingPerStudent = studentArray.map((student) => {
-
-            const RatingPerStudent =
-                data.filter((data) => data.studentName === student)
-                    .map((data) => data[input])
-
-            const averageRating = RatingPerStudent.reduce((a, b) => a + b) / RatingPerStudent.length
+            const averageRating = ratingPerInput.reduce((a, b) => a + b) / ratingPerInput.length
 
             return averageRating
-
         })
-        return RatingPerStudent.map(item => Math.round(item * 10) / 10)
-    }
+        return averageRating.map(item => Math.round(item * 10) / 10)
+    } //get average rating per category
 
-    const funRatingStudent = AverageRatingByStudent(data, "fun")
-    const difficultyRatingStudent = AverageRatingByStudent(data, "difficulty")
+    const funRatingAssignment = AverageRating("fun", "assignment")
+    const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
 
     const [radio, setRadio] = useState({
-        horizontal: assignmentArray,
+        horizontal: category("assignment"),
         verticalD: difficultyRatingAssignment,
         verticalF: funRatingAssignment,
-        title: "Assignment"
-    })
+        title: "assignment"
+    })//default state
 
     const handleChange = (e) => {
 
+        const funRatingStudent = AverageRating("fun", "studentName")
+        const difficultyRatingStudent = AverageRating("difficulty", "studentName")
+
+
         if (e.target.value === "assignment") {
             setRadio({
-                horizontal: assignmentArray,
+                horizontal: category("assignment"),
                 verticalD: difficultyRatingAssignment,
                 verticalF: funRatingAssignment,
                 title: "Assignment"
             })
         } else {
             setRadio({
-                horizontal: studentArray,
+                horizontal: category("studentName"),
                 verticalD: difficultyRatingStudent,
                 verticalF: funRatingStudent,
                 title: "Student"
             })
         }
-    }
+    }//change state
 
-    let horizontalArray = radio.horizontal
-    let verticalArrayDifficulty = radio.verticalD
-    let verticalArrayFun = radio.verticalF
-    let title = `Difficulty and enjoyment rating per ${radio.title}`
+    const handleClick = (e) => {
+
+        const barChart = document.querySelector(".bar-chart")
+        const lineChart = document.querySelector(".line-chart")
+
+        if (barChart.style.display === "none") {
+            barChart.style.display = "block"
+            lineChart.style.display = "none"
+        } else {
+            barChart.style.display = "none"
+            lineChart.style.display = "block"
+        }
+    }//switch chart
 
     return (
+        <>
+            <Navbar data={category("studentName")} />
+            <div className="chart-wrapper" >
 
-        <div className="chart-wrapper" >
-            <div className="radio">
-                <label>
-                    <label> Assignment:
-                        <input
-                            defaultChecked="checked"
-                            onChange={handleChange}
-                            type="radio"
-                            name="data"
-                            value="assignment">
-                        </input>
-                    </label>
-                    <label> Student:
-                        <input
-                            onChange={handleChange}
-                            type="radio"
-                            name="data"
-                            value="student">
-                        </input>
-                    </label>
-                </label>
+                <RadioButton handleChange={handleChange} />
+
+                <button className="chart-button" onClick={handleClick}>switch chart</button>
+
+                <div className="bar-chart">
+                    <BarChart data={{
+                        title: `Difficulty and enjoyment rating per ${radio.title}`,
+                        horizontalArray: radio.horizontal,
+                        verticalArrayDifficulty: radio.verticalD,
+                        verticalArrayFun: radio.verticalF,
+                    }} />
+                </div>
+
+                <div className="line-chart">
+                    <LineChart data={{
+                        title: `Difficulty and enjoyment rating per ${radio.title}`,
+                        horizontalArray: radio.horizontal,
+                        verticalArrayDifficulty: radio.verticalD,
+                        verticalArrayFun: radio.verticalF,
+                    }} />
+                </div>
             </div>
-
-
-        
-            <div className="dropdown">
-                <span className="tag">List</span>
-                <StudentList data={studentArray} />
-            </div>
-
-            <BarChart data={{
-                title,
-                horizontalArray,
-                verticalArrayDifficulty,
-                verticalArrayFun,
-            }} />
-
-        </div>
+        </>
     )
 }
 

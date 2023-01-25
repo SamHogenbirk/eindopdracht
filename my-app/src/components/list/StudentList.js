@@ -3,10 +3,9 @@ import ListItem from './ListItem'
 
 
 const StudentList = (props) => {
+    // console.log(props)
 
-    const id = () => {
-        return parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
-    }
+    const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
 
     return (
         <div className='dropdown-content'>

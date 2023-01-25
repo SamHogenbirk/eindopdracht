@@ -8,13 +8,13 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/student" element={<Student />} />
-        {/* <Route path="/test" element={<Test />} /> */}
+        <Route path="/student/:name" element={<Student />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
-    </div>
+    </>
   )
 }
 
