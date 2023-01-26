@@ -10,26 +10,28 @@
   background: linear-gradient(90deg, rgb(66, 135, 245) 50%, rgb(182, 245, 66) 50%);
 }
 
+.dropbtn-list {
+  font-size: 16px;
+  border: solid 1px rgb(66, 135, 245);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  color: white;
+  padding: 10 0 10 0;
+  background-color: rgb(66, 135, 245);
+  font-family: inherit;
+  width: 400px;
+  margin-left: calc(25% - 200px);
+  height: 30px;
+}
+.dropbtn-list:hover {
+  background-color: red;
+}
+
 .dropdown {
-  float: left;
   overflow: hidden;
 }
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.dropbtn-list {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: rgb(66, 135, 245);
-  font-family: inherit;
-  margin: 0;
-}
-.dropbtn-list:hover {
-  background-color: red;
 }
 
 .dropdown-content {
