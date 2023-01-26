@@ -10,8 +10,9 @@ const Navbar = () => {
     return (
         <>
             <div className="navbar">
+                <div className="border-top"></div>
                 <div className="dropdown">
-                    <button className="dropbtn">List
+                    <button className="dropbtn-list">List
                         <i className="fa fa-caret-down"></i>
                     </button>
                     <div>

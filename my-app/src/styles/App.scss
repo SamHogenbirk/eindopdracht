@@ -1,5 +1,7 @@
 @import "./navbar";
 @import "./charts";
+@import "./variables";
+
 
 @mixin flexCenter() {
   display: flex;
@@ -26,16 +28,3 @@
 
 }
 
-// ul {
-//   padding: 0px 3px 5px 3px;
-//   margin-top: 0px;
-//   width: fit-content;
-//   list-style-type: none;
-// }
-
-// .li-item {
-//   display: inline-block;
-//   width: 100%;
-//   padding: 13px;
-//   margin: 0px;
-// }
