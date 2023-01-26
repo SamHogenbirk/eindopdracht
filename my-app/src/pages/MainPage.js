@@ -82,14 +82,15 @@ const MainPage = () => {
         }
     }//switch chart
 
+
     return (
         <>
-            <Navbar data={category("studentName")} />
+            <Navbar />
 
             <div className="chart-wrapper" >
                 <RadioButton handleChange={handleChange} />
-                
-                <button className="chart-button" onClick={handleClick}> switch chart</button>
+
+                <button className="chart-button" onClick={handleClick}>switch chart</button>
 
                 <div className="bar-chart">
                     <BarChart data={{

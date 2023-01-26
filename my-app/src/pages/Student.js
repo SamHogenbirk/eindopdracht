@@ -2,10 +2,12 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import BarChart from "../components/charts/BarChart"
+import Navbar from "../components/Navbar"
 
 const Student = () => {
 
     const data = useSelector((state) => state.data.StudentData)
+
     const { name } = useParams()
     const ratingPerStudent = (data, name) => data.filter((data) => data.studentName === name)
 
@@ -16,12 +18,16 @@ const Student = () => {
 
     return (
         <>
+            <Navbar />
+
             <BarChart data={{
                 title,
                 horizontalArray,
                 verticalArrayDifficulty,
                 verticalArrayFun,
             }} />
+
+
         </>
     )
 }

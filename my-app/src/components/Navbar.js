@@ -1,7 +1,11 @@
 import React from "react"
 import StudentList from "./list/StudentList"
+import { useSelector } from "react-redux"
 
-const Navbar = (props) => {
+const Navbar = () => {
+
+    const data = useSelector((state) => state.data.StudentData)
+    const list = [...new Set(data.map(item => item.studentName))]
 
     return (
         <>
@@ -10,8 +14,8 @@ const Navbar = (props) => {
                     <button className="dropbtn">List
                         <i className="fa fa-caret-down"></i>
                     </button>
-                    <div className="dropdown-content">
-                        <StudentList data={props.data} />
+                    <div>
+                        <StudentList data={list} />
                     </div>
                 </div>
             </div>
