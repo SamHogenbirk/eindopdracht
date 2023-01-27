@@ -7,8 +7,8 @@ const StudentList = (props) => {
     const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
 
     return (
-        <div className='dropdown-content' >
-            <ul>
+        <div className='dropdown-content-list' >
+            <ul className='dropdown-ul'>
                 {props.data.map((item) => <ListItem key={id()} data={item} />)}
             </ul>
         </div>

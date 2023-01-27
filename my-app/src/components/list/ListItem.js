@@ -6,11 +6,10 @@ const ListItem = (props) => {
     return (
         <>
             <li className="li-item">
-                <Link  to={`/student/${props.data}`}>{props.data}</Link>
+                <Link to={`/student/${props.data}`}>{props.data}</Link>
             </li>
         </>
     )
 }
-
 
 export default ListItem 
