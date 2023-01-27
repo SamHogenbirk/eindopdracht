@@ -1,4 +1,4 @@
-const studentsData = [
+const studentData = [
   {
     "studentName": "Evelyn",
     "assignment": "SCRUM",
@@ -3361,4 +3361,4 @@ const studentsData = [
   }
 ]
 
-export default studentsData
+export default studentData

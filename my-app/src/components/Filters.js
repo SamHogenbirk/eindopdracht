@@ -1,39 +1,47 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
+import RadioButton from "./RadioButton";
+import { radioResult } from "../features/FilterSlice";
 
+const Filters = () => {
 
-const Filters = (props) => {
-
-    const data = useSelector((state) => state.data.StudentData)
-    const list = [...new Set(data.map(item => item.studentName))]
-    // const [search, setSearch] = useState("")
     const dispatch = useDispatch()
 
-    const handleSearch = (e) => {
-        // setSearch(e.target.value)
-        // dispatch({ type: "SEARCH", payload: e.target.value })
-    }
+    const handleChange = (e) => {
+        dispatch(radioResult({ filter: e.target.value }))
+    }//radio button
+
+    const handleClick = (e) => {
+
+        const barChart = document.querySelector(".bar-chart")
+        const lineChart = document.querySelector(".line-chart")
+
+        if (barChart.style.display === "none") {
+            barChart.style.display = "block"
+            lineChart.style.display = "none"
+
+
+        } else {
+            barChart.style.display = "none"
+            lineChart.style.display = "block"
+        }
+    }//switch chart
 
     return (
         <>
             <div className="dropdown-content-filter">
                 <ul className="dropdown-ul">
-                    <li className="li-item">
 
+                    <li>
+                        <RadioButton handleChange={handleChange} />
                     </li>
-                    <li className="li-item">
-                        <p> b</p>
+                    <li>
+                        <button className="chart-button" onClick={handleClick}>switch chart</button>
                     </li>
-                    <li className="li-item">
-                        <p> c</p>
-                    </li>
-                    <li className="li-item">
-                        <p> d</p>
-                    </li>
+
                 </ul>
             </div>
+
         </>
     )
 }

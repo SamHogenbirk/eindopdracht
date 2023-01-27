@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const RadioButton = ({ handleChange }) => {
 
     return (
@@ -26,7 +25,7 @@ const RadioButton = ({ handleChange }) => {
                             value="student">
                         </input>
                     </label>
-                    
+
                 </label>
             </div>
         </>

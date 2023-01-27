@@ -26,8 +26,6 @@ const Student = () => {
                 verticalArrayDifficulty,
                 verticalArrayFun,
             }} />
-
-
         </>
     )
 }

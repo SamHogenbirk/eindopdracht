@@ -1,19 +1,17 @@
 import React from "react"
 import BarChart from "../components/charts/BarChart"
-import RadioButton from "../components/RadioButton"
 import Navbar from "../components/Navbar"
 import LineChart from "../components/charts/LineChart"
 import { useSelector } from "react-redux"
-import { useState } from "react"
-// import { uniqueArray } from "../features/FilterSlice"
-// import { useDispatch } from "react-redux"
+import { useState, useEffect } from "react"
 
 
 const MainPage = () => {
 
     const data = useSelector((state) => state.data.StudentData)
+    const filterData = useSelector((state) => state.filter.filter)
 
-    let category = (input) => [...new Set(data.map(item => item[input]))]
+    let category = (input) => [...new Set(data.map(item => item[input]))] //get unique values
 
     const AverageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
 
@@ -28,7 +26,7 @@ const MainPage = () => {
             return averageRating
         })
         return averageRating.map(item => Math.round(item * 10) / 10)
-    } //get average rating per category
+    }//get average rating per category
 
     const funRatingAssignment = AverageRating("fun", "assignment")
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
@@ -40,13 +38,12 @@ const MainPage = () => {
         title: "assignment"
     })//default state
 
-    const handleChange = (e) => {
+    useEffect(() => {
 
         const funRatingStudent = AverageRating("fun", "studentName")
         const difficultyRatingStudent = AverageRating("difficulty", "studentName")
 
-
-        if (e.target.value === "assignment") {
+        if (filterData === "assignment") {
             setRadio({
                 horizontal: category("assignment"),
                 verticalD: difficultyRatingAssignment,
@@ -61,36 +58,13 @@ const MainPage = () => {
                 title: "Student"
             })
         }
-    }//change state
-
-    const handleClick = (e) => {
-
-        const barChart = document.querySelector(".bar-chart")
-        const lineChart = document.querySelector(".line-chart")
-
-
-        if (barChart.style.display === "none") {
-            barChart.style.display = "block"
-            lineChart.style.display = "none"
-
-
-        } else {
-            barChart.style.display = "none"
-            lineChart.style.display = "block"
-
-
-        }
-    }//switch chart
-
+    }, [filterData])
 
     return (
         <>
             <Navbar />
 
             <div className="chart-wrapper" >
-                <RadioButton handleChange={handleChange} />
-
-                <button className="chart-button" onClick={handleClick}>switch chart</button>
 
                 <div className="bar-chart">
                     <BarChart data={{

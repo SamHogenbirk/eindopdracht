@@ -1,12 +1,15 @@
 import React from "react"
-import StudentList from "./list/StudentList"
+import StudentList from "./StudentList"
 import { useSelector } from "react-redux"
 import Filters from "./Filters"
+import { Link } from "react-router-dom"
+
 
 const Navbar = () => {
 
     const data = useSelector((state) => state.data.StudentData)
     const list = [...new Set(data.map(item => item.studentName))]
+    const isHome = window.location.pathname === "/"
 
     return (
         <>
@@ -15,20 +18,23 @@ const Navbar = () => {
 
                 <span className="dropdown-list">
                     <div className="button-wrapper-list">
-                        <button className="dropbtn-list ">Student list
-                            <i className="fa fa-caret-down"></i>
-                        </button>
+                        <button className="dropbtn-list ">Student list</button>
                         <div>
                             <StudentList data={list} />
                         </div>
                     </div>
                 </span>
 
+
+                <span className="button-wrapper-home" style={isHome ? { display: "none" } : { display: "block" }}  >
+                    <Link to="/">
+                        <button type="button" className="home-button">-home-</button>
+                    </Link>
+                </span>
+
                 <span className="dropdown-filter">
                     <div className="button-wrapper-filter">
-                        <button className="dropbtn-filter ">Filters
-                            <i className="fa fa-caret-down"></i>
-                        </button>
+                        <button className="dropbtn-filter">Filters</button>
                         <div>
                             <Filters />
                         </div>
