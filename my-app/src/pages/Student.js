@@ -4,15 +4,18 @@ import { useSelector } from 'react-redux'
 import BarChart from "../components/charts/BarChart"
 import Navbar from "../components/Navbar"
 
+
 const Student = () => {
 
-    const data = useSelector((state) => state.data.StudentData)
+    const data = useSelector((state) => state.data.studentData)
+    const arrays = useSelector((state) => state.array)
 
     const { name } = useParams()
-    const ratingPerStudent = (data, name) => data.filter((data) => data.studentName === name)
 
+    const ratingPerStudent = (data, name) => data.filter((data) => data.studentName === name)
+   
     const title = `Difficulty and enjoyment rating for ${name}`
-    const horizontalArray = [...new Set(data.map(item => item.assignment))]
+    const horizontalArray = arrays.assignment
     const verticalArrayDifficulty = ratingPerStudent(data, name).map(item => item.difficulty)
     const verticalArrayFun = ratingPerStudent(data, name).map(item => item.fun)
 
@@ -20,12 +23,15 @@ const Student = () => {
         <>
             <Navbar />
 
-            <BarChart data={{
-                title,
-                horizontalArray,
-                verticalArrayDifficulty,
-                verticalArrayFun,
-            }} />
+            <div className='chart-wrapper'>
+                <BarChart className="bar-chart"
+                    data={{
+                        title,
+                        horizontalArray,
+                        verticalArrayDifficulty,
+                        verticalArrayFun,
+                    }} />
+            </div>
         </>
     )
 }

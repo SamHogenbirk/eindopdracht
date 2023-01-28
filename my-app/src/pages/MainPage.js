@@ -1,21 +1,19 @@
 import React from "react"
-import BarChart from "../components/charts/BarChart"
 import Navbar from "../components/Navbar"
+import BarChart from "../components/charts/BarChart"
 import LineChart from "../components/charts/LineChart"
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 
-
 const MainPage = () => {
 
-    const data = useSelector((state) => state.data.StudentData)
+    const data = useSelector((state) => state.data.studentData)
     const filterData = useSelector((state) => state.filter.filter)
-
-    let category = (input) => [...new Set(data.map(item => item[input]))] //get unique values
+    const arrays = useSelector((state) => state.array)
 
     const AverageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
 
-        const averageRating = category(inputB).map((item) => {
+        const averageRating = arrays[inputB].map((item) => {
 
             const ratingPerInput =
                 data.filter((data) => data[inputB] === item)
@@ -31,8 +29,8 @@ const MainPage = () => {
     const funRatingAssignment = AverageRating("fun", "assignment")
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
 
-    const [radio, setRadio] = useState({
-        horizontal: category("assignment"),
+    const [category, setCategory] = useState({
+        horizontal: arrays.assignment,
         verticalD: difficultyRatingAssignment,
         verticalF: funRatingAssignment,
         title: "assignment"
@@ -44,21 +42,29 @@ const MainPage = () => {
         const difficultyRatingStudent = AverageRating("difficulty", "studentName")
 
         if (filterData === "assignment") {
-            setRadio({
-                horizontal: category("assignment"),
+            setCategory({
+                horizontal: arrays.assignment,
                 verticalD: difficultyRatingAssignment,
                 verticalF: funRatingAssignment,
                 title: "Assignment"
             })
         } else {
-            setRadio({
-                horizontal: category("studentName"),
+            setCategory({
+                horizontal: arrays.studentName,
                 verticalD: difficultyRatingStudent,
                 verticalF: funRatingStudent,
                 title: "Student"
             })
         }
+        // eslint-disable-next-line
     }, [filterData])
+
+    const chartData = {
+        title: `Difficulty and enjoyment rating per ${category.title}`,
+        horizontalArray: category.horizontal,
+        verticalArrayDifficulty: category.verticalD,
+        verticalArrayFun: category.verticalF,
+    }
 
     return (
         <>
@@ -67,21 +73,11 @@ const MainPage = () => {
             <div className="chart-wrapper" >
 
                 <div className="bar-chart">
-                    <BarChart data={{
-                        title: `Difficulty and enjoyment rating per ${radio.title}`,
-                        horizontalArray: radio.horizontal,
-                        verticalArrayDifficulty: radio.verticalD,
-                        verticalArrayFun: radio.verticalF,
-                    }} />
+                    <BarChart data={chartData} />
                 </div>
 
                 <div className="line-chart">
-                    <LineChart data={{
-                        title: `Difficulty and enjoyment rating per ${radio.title}`,
-                        horizontalArray: radio.horizontal,
-                        verticalArrayDifficulty: radio.verticalD,
-                        verticalArrayFun: radio.verticalF,
-                    }} />
+                    <LineChart data={chartData} />
                 </div>
             </div>
         </>

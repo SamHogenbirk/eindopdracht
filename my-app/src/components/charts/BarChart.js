@@ -5,18 +5,12 @@ import { Bar } from 'react-chartjs-2'
 
 function BarChart(props, handleClick) {
 
-    // //props:
-    //     title
-    //     horizontalArray (name/assignment)
-    //     verticalArrayDifficulty
-    //     verticalArrayFun
-
     const options = {
         responsive: true,
         plugins: {
             display: true,
             legend: {
-                onClick: (e, legendItem, legend) => {
+                onClick: ( legendItem, legend) => {
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
                     legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)

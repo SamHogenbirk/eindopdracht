@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    filter: "assignment",   
+    filter: "assignment",
 
 }
 
@@ -13,6 +13,7 @@ const FilterSlice = createSlice({
 
         radioResult: (state, action) => {
             state = action.payload
+            console.log(state)
             return state
         }
     },

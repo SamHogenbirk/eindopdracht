@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import RadioButton from "./RadioButton";
 import { radioResult } from "../features/FilterSlice";
 
+
 const Filters = () => {
 
     const dispatch = useDispatch()
@@ -12,14 +13,14 @@ const Filters = () => {
     }//radio button
 
     const handleClick = (e) => {
-
+        e.preventDefault()
+        
         const barChart = document.querySelector(".bar-chart")
         const lineChart = document.querySelector(".line-chart")
 
         if (barChart.style.display === "none") {
             barChart.style.display = "block"
             lineChart.style.display = "none"
-
 
         } else {
             barChart.style.display = "none"
@@ -38,7 +39,11 @@ const Filters = () => {
                     <li>
                         <button className="chart-button" onClick={handleClick}>switch chart</button>
                     </li>
-
+                    <li>
+                       <select>
+                            
+                       </select>
+                    </li>
                 </ul>
             </div>
 

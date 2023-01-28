@@ -7,8 +7,7 @@ import { Link } from "react-router-dom"
 
 const Navbar = () => {
 
-    const data = useSelector((state) => state.data.StudentData)
-    const list = [...new Set(data.map(item => item.studentName))]
+    const arrays = useSelector((state) => state.array)
     const isHome = window.location.pathname === "/"
 
     return (
@@ -20,7 +19,7 @@ const Navbar = () => {
                     <div className="button-wrapper-list">
                         <button className="dropbtn-list ">Student list</button>
                         <div>
-                            <StudentList data={list} />
+                            <StudentList data={arrays.studentName} />
                         </div>
                     </div>
                 </span>
