@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
+
 const initialState = {
     filter: "assignment",
-
 }
 
 const FilterSlice = createSlice({
@@ -13,10 +13,12 @@ const FilterSlice = createSlice({
 
         radioResult: (state, action) => {
             state = action.payload
-            console.log(state)
             return state
-        }
+        },
+
     },
+
+
 })
 
 export const { radioResult } = FilterSlice.actions

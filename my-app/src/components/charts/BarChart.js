@@ -3,6 +3,7 @@ import Chart from "chart.js/auto"
 import { Bar } from 'react-chartjs-2'
 
 
+
 function BarChart(props, handleClick) {
 
     const options = {
@@ -10,7 +11,7 @@ function BarChart(props, handleClick) {
         plugins: {
             display: true,
             legend: {
-                onClick: ( legendItem, legend) => {
+                onClick: (e,legendItem, legend) => {
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
                     legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)

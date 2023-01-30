@@ -1,22 +1,26 @@
-import React from "react"
+
 import Navbar from "../components/Navbar"
 import BarChart from "../components/charts/BarChart"
 import LineChart from "../components/charts/LineChart"
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 
+
 const MainPage = () => {
 
-    const data = useSelector((state) => state.data.studentData)
+    const data = useSelector((state) => state.data)
     const filterData = useSelector((state) => state.filter.filter)
-    const arrays = useSelector((state) => state.array)
+
+    // console.log(data)
+
+    const category = (input) => [...new Set(data.studentData.map(item => item[input]))]
 
     const AverageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
 
-        const averageRating = arrays[inputB].map((item) => {
+        const averageRating = category(inputB).map((item) => {
 
             const ratingPerInput =
-                data.filter((data) => data[inputB] === item)
+                data.studentData.filter((data) => data[inputB] === item)
                     .map((data) => data[inputA])
 
             const averageRating = ratingPerInput.reduce((a, b) => a + b) / ratingPerInput.length
@@ -29,8 +33,9 @@ const MainPage = () => {
     const funRatingAssignment = AverageRating("fun", "assignment")
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
 
-    const [category, setCategory] = useState({
-        horizontal: arrays.assignment,
+
+    const [cat, setCat] = useState({
+        horizontal: category("assignment"),
         verticalD: difficultyRatingAssignment,
         verticalF: funRatingAssignment,
         title: "assignment"
@@ -42,28 +47,29 @@ const MainPage = () => {
         const difficultyRatingStudent = AverageRating("difficulty", "studentName")
 
         if (filterData === "assignment") {
-            setCategory({
-                horizontal: arrays.assignment,
+            setCat({
+                horizontal: category("assignment"),
                 verticalD: difficultyRatingAssignment,
                 verticalF: funRatingAssignment,
                 title: "Assignment"
             })
         } else {
-            setCategory({
-                horizontal: arrays.studentName,
+            setCat({
+                horizontal: category("studentName"),
                 verticalD: difficultyRatingStudent,
                 verticalF: funRatingStudent,
                 title: "Student"
             })
         }
-        // eslint-disable-next-line
-    }, [filterData])
 
-    const chartData = {
-        title: `Difficulty and enjoyment rating per ${category.title}`,
-        horizontalArray: category.horizontal,
-        verticalArrayDifficulty: category.verticalD,
-        verticalArrayFun: category.verticalF,
+        // eslint-disable-next-line
+    }, [filterData, data])
+
+    let chartData = {
+        title: `Difficulty and enjoyment rating per ${cat.title}`,
+        horizontalArray: cat.horizontal,
+        verticalArrayDifficulty: cat.verticalD,
+        verticalArrayFun: cat.verticalF,
     }
 
     return (
@@ -82,6 +88,7 @@ const MainPage = () => {
             </div>
         </>
     )
+
 }
 
 export default MainPage

@@ -13,7 +13,6 @@ function LineChart(props) {
             legend: {
                 // fillStyle: "rgb(66, 135, 245)",
                 onClick: (e, legendItem, legend) => {
-
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
                     legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)
