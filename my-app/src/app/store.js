@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import DataReducer from '../features/DataSlice';
 import FilterReducer from '../features/FilterSlice';
 import ArrayReducer from '../features/ArraySlice';
+import ChartReducer from '../features/ChartSlice';
 
 
 export const Store = configureStore({
@@ -9,5 +10,6 @@ export const Store = configureStore({
     data: DataReducer,
     filter: FilterReducer,
     array: ArrayReducer,
+    chart: ChartReducer,
   },
 });

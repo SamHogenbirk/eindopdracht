@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import RadioButton from "./RadioButton";
+import RadioButtons from "./RadioButtons";
 import { radioResult } from "../features/FilterSlice";
+import { sortList } from "../features/DataSlice";
 
 
 const Filters = () => {
@@ -9,12 +10,26 @@ const Filters = () => {
     const dispatch = useDispatch()
 
     const handleChange = (e) => {
-        dispatch(radioResult({ filter: e.target.value }))
-    }//radio button
+
+        // console.log(e.target.name)
+
+        switch (e.target.name) {
+            case "chartType":
+
+                dispatch(radioResult({ filter: e.target.value }))
+                break;
+
+            case "sortRadio":
+
+                // console.log(e.target.value)
+                dispatch(sortList(e.target.value))
+                break;
+
+        }
+    }
 
     const handleClick = (e) => {
-        e.preventDefault()
-        
+
         const barChart = document.querySelector(".bar-chart")
         const lineChart = document.querySelector(".line-chart")
 
@@ -26,7 +41,9 @@ const Filters = () => {
             barChart.style.display = "none"
             lineChart.style.display = "block"
         }
-    }//switch chart
+
+    }
+
 
     return (
         <>
@@ -34,15 +51,13 @@ const Filters = () => {
                 <ul className="dropdown-ul">
 
                     <li>
-                        <RadioButton handleChange={handleChange} />
+                        <RadioButtons props={"chartType"} handleChange={handleChange} />
                     </li>
                     <li>
-                        <button className="chart-button" onClick={handleClick}>switch chart</button>
+                        <button className="chart-button" name="switch" onClick={handleClick}>switch chart</button>
                     </li>
                     <li>
-                       <select>
-                            
-                       </select>
+                        <RadioButtons props={"sort"} handleChange={handleChange} />
                     </li>
                 </ul>
             </div>
@@ -50,7 +65,5 @@ const Filters = () => {
         </>
     )
 }
-
-
 
 export default Filters

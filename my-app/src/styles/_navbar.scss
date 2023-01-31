@@ -8,8 +8,12 @@
 }
 
 .navbar {
+    position: flex;
+    width: 100%;
     overflow: hidden;
     font-family: Arial;
+
+    
 }
 
 .border-top {
@@ -95,7 +99,7 @@
     width: 400px;
     height: 30px;
     cursor: pointer;
-
+    
 }
 
 .home-button {

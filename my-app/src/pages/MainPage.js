@@ -2,16 +2,19 @@
 import Navbar from "../components/Navbar"
 import BarChart from "../components/charts/BarChart"
 import LineChart from "../components/charts/LineChart"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
+import { chartData } from "../features/ChartSlice"
+
 
 
 const MainPage = () => {
 
     const data = useSelector((state) => state.data)
     const filterData = useSelector((state) => state.filter.filter)
+    const dispatch = useDispatch()
 
-    // console.log(data)
+    // console.log(data.studentData)
 
     const category = (input) => [...new Set(data.studentData.map(item => item[input]))]
 
@@ -34,43 +37,70 @@ const MainPage = () => {
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
 
 
-    const [cat, setCat] = useState({
-        horizontal: category("assignment"),
-        verticalD: difficultyRatingAssignment,
-        verticalF: funRatingAssignment,
-        title: "assignment"
-    })//default state
+    // const [cat, setCat] = useState({
+    //     horizontal: category("assignment"),
+    //     verticalD: difficultyRatingAssignment,
+    //     verticalF: funRatingAssignment,
+    //     title: "assignment"
+    // }
+
+    useEffect(() => {
+        dispatch(chartData({
+            horizontal: category("assignment"),
+            verticalD: difficultyRatingAssignment,
+            verticalF: funRatingAssignment,
+            title: "assignment"
+        }))
+    }, [dispatch])
+
+
 
     useEffect(() => {
 
         const funRatingStudent = AverageRating("fun", "studentName")
         const difficultyRatingStudent = AverageRating("difficulty", "studentName")
 
+        // if (filterData === "assignment") {
+        //     setCat({
+        //         horizontal: category("assignment"),
+        //         verticalD: difficultyRatingAssignment,
+        //         verticalF: funRatingAssignment,
+        //         title: "Assignment"
+        //     })
+        // } else {
+        //     setCat({
+        //         horizontal: category("studentName"),
+        //         verticalD: difficultyRatingStudent,
+        //         verticalF: funRatingStudent,
+        //         title: "Student"
+        //     })
+        // }
+
         if (filterData === "assignment") {
-            setCat({
+            dispatch(chartData({
                 horizontal: category("assignment"),
                 verticalD: difficultyRatingAssignment,
                 verticalF: funRatingAssignment,
-                title: "Assignment"
-            })
+                title: "Difficulty and enjoyment rating per Assignment"
+            }))
         } else {
-            setCat({
+            dispatch(chartData({
                 horizontal: category("studentName"),
                 verticalD: difficultyRatingStudent,
                 verticalF: funRatingStudent,
-                title: "Student"
-            })
+                title: "Difficulty and enjoyment rating per Student"
+            }))
         }
 
         // eslint-disable-next-line
-    }, [filterData, data])
+    }, [filterData])
 
-    let chartData = {
-        title: `Difficulty and enjoyment rating per ${cat.title}`,
-        horizontalArray: cat.horizontal,
-        verticalArrayDifficulty: cat.verticalD,
-        verticalArrayFun: cat.verticalF,
-    }
+    // let chartDatax = {
+    //     title: `Difficulty and enjoyment rating per ${cat.title}`,
+    //     horizontalArray: cat.horizontal,
+    //     verticalArrayDifficulty: cat.verticalD,
+    //     verticalArrayFun: cat.verticalF,
+    // }
 
     return (
         <>
@@ -78,13 +108,15 @@ const MainPage = () => {
 
             <div className="chart-wrapper" >
 
+                {/* data={chartDatax} */}
+
                 <div className="bar-chart">
-                    <BarChart data={chartData} />
+                    <BarChart />
                 </div>
 
-                <div className="line-chart">
-                    <LineChart data={chartData} />
-                </div>
+                {/* <div className="line-chart">
+                    <LineChart  />
+                </div> */}
             </div>
         </>
     )

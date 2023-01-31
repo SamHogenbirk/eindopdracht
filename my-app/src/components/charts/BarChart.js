@@ -1,17 +1,23 @@
 import React from "react"
 import Chart from "chart.js/auto"
 import { Bar } from 'react-chartjs-2'
+import { useSelector } from "react-redux"
 
 
 
 function BarChart(props, handleClick) {
+
+    // console.log(props.data)
+
+    const chartData = useSelector((state) => state.chart)
+    // console.log(chartData)
 
     const options = {
         responsive: true,
         plugins: {
             display: true,
             legend: {
-                onClick: (e,legendItem, legend) => {
+                onClick: (e, legendItem, legend) => {
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
                     legend.chart.isDatasetVisible(index) ? legend.chart.hide(index) : legend.chart.show(index)
@@ -35,21 +41,21 @@ function BarChart(props, handleClick) {
                 title: {
 
                     display: false,
-                    text: props.data.title,
+                    text: chartData.title,
                 },
             }
         }
     }
 
-    const barData =
-    {
-        labels: props.data.horizontalArray, //horizontal axis
+    let barData = {
+
+        labels: chartData.horizontalArray, //horizontal axis
 
         datasets: [
             {
                 label: "Difficulty rating",
-                data: props.data.verticalArrayDifficulty, //vertical axis
-                backgroundColor: props.data.verticalArrayDifficulty
+                data: chartData.verticalArrayDifficulty, //vertical axis
+                backgroundColor: chartData.verticalArrayDifficulty
                     .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
 
                 borderWidth: 1,
@@ -59,8 +65,8 @@ function BarChart(props, handleClick) {
             },
             {
                 label: "Fun rating",
-                data: props.data.verticalArrayFun, //vertical axis
-                backgroundColor: props.data.verticalArrayFun
+                data: chartData.verticalArrayFun, //vertical axis
+                backgroundColor: chartData.verticalArrayFun
                     .map(item => item < 2 ? "red" : "rgb(182, 245, 66)"),
 
                 borderWidth: 1,
@@ -68,9 +74,58 @@ function BarChart(props, handleClick) {
                 categoryPercentage: 0.7,
                 borderRadius: 10,
             }],
-
-
     }
+
+    // const arrayOfObj = barData.labels.map(function (d, i) {
+    //     return {
+    //         label: d,
+    //         data: props.data.verticalArrayDifficulty[i] || 0
+    //     };
+    // })
+
+    // const sortedArrayOfObj = arrayOfObj.sort(function (a, b) {
+
+    //     return b.data < a.data ? 1 : -1;
+    // })
+
+    // let newArrayLabel = [];
+    // let newArrayData = [];
+    // sortedArrayOfObj.forEach(function (d) {
+    //     newArrayLabel.push(d.label);
+    //     newArrayData.push(d.data);
+    // });
+
+    // console.log(newArrayLabel);
+    // console.log(newArrayData);
+
+    // barData = {
+    //     labels: newArrayLabel, //horizontal axis
+
+    //     datasets: [
+    //         {
+    //             label: "Difficulty rating",
+    //             data: newArrayData, //vertical axis
+    //             backgroundColor: props.data.verticalArrayDifficulty
+    //                 .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
+
+    //             borderWidth: 1,
+    //             barPercentage: 1,
+    //             categoryPercentage: 0.7,
+    //             borderRadius: 10,
+    //         },
+    //         {
+    //             label: "Fun rating",
+    //             data: props.data.verticalArrayFun, //vertical axis
+    //             backgroundColor: props.data.verticalArrayFun
+    //                 .map(item => item < 2 ? "red" : "rgb(182, 245, 66)"),
+
+    //             borderWidth: 1,
+    //             barPercentage: 1,
+    //             categoryPercentage: 0.7,
+    //             borderRadius: 10,
+    //         }
+    //     ],
+    // }
 
     return (
         <div className="chart" >
@@ -78,7 +133,6 @@ function BarChart(props, handleClick) {
             <Bar
                 data={barData}
                 options={options}
-
             />
         </div >
     );
