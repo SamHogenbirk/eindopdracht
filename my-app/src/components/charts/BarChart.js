@@ -3,20 +3,16 @@ import Chart from "chart.js/auto"
 import { Bar } from 'react-chartjs-2'
 import { useSelector } from "react-redux"
 
-
-
-function BarChart(props, handleClick) {
-
-    // console.log(props.data)
+function BarChart() {
 
     const chartData = useSelector((state) => state.chart)
-    // console.log(chartData)
 
     const options = {
         responsive: true,
         plugins: {
             display: true,
             legend: {
+
                 onClick: (e, legendItem, legend) => {
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
@@ -24,7 +20,7 @@ function BarChart(props, handleClick) {
                 },
 
                 labels: {
-
+                  
                     generateLabels: (chart) => {
 
                         return chart.data.datasets.map((dataset, i) => ({
@@ -35,7 +31,6 @@ function BarChart(props, handleClick) {
                             lineCap: dataset.borderCapStyle,
                         }))
                     },
-
                 },
 
                 title: {
@@ -53,6 +48,7 @@ function BarChart(props, handleClick) {
 
         datasets: [
             {
+
                 label: "Difficulty rating",
                 data: chartData.verticalArrayDifficulty, //vertical axis
                 backgroundColor: chartData.verticalArrayDifficulty
@@ -64,6 +60,7 @@ function BarChart(props, handleClick) {
                 borderRadius: 10,
             },
             {
+                
                 label: "Fun rating",
                 data: chartData.verticalArrayFun, //vertical axis
                 backgroundColor: chartData.verticalArrayFun
@@ -76,7 +73,20 @@ function BarChart(props, handleClick) {
             }],
     }
 
-    // const arrayOfObj = barData.labels.map(function (d, i) {
+    return (
+        <div className="chart" >
+            <h2 className="chart-title" >{options.plugins.legend.title.text}</h2>
+            <Bar
+                data={barData}
+                options={options}
+            />
+        </div >
+    );
+}
+
+export default BarChart;
+
+   // const arrayOfObj = barData.labels.map(function (d, i) {
     //     return {
     //         label: d,
     //         data: props.data.verticalArrayDifficulty[i] || 0
@@ -126,16 +136,3 @@ function BarChart(props, handleClick) {
     //         }
     //     ],
     // }
-
-    return (
-        <div className="chart" >
-            <h2 className="chart-title" >{options.plugins.legend.title.text}</h2>
-            <Bar
-                data={barData}
-                options={options}
-            />
-        </div >
-    );
-}
-
-export default BarChart;

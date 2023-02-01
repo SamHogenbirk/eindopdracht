@@ -1,10 +1,11 @@
 import React from "react"
 import Chart from 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
-
-
+import { useSelector } from "react-redux"
 
 function LineChart(props) {
+
+    const chartData = useSelector((state) => state.chart)
 
     const options = {
         responsive: true,
@@ -30,7 +31,7 @@ function LineChart(props) {
 
                     title: {
                         display: false,
-                        text: props.data.title
+                        text: chartData.title
                     }
                 }
             }
@@ -39,13 +40,13 @@ function LineChart(props) {
 
     const lineData = {
 
-        labels: props.data.horizontalArray,
+        labels: chartData.horizontalArray,
 
         datasets: [
 
             {
                 label: "Difficulty rating",
-                data: props.data.verticalArrayDifficulty,
+                data: chartData.verticalArrayDifficulty,
                 fill: false,
                 borderColor: "rgb(66, 135, 245)",
                 backgroundColor: "rgb(66, 135, 245)",
@@ -53,7 +54,7 @@ function LineChart(props) {
             },
             {
                 label: "Fun rating",
-                data: props.data.verticalArrayFun,
+                data: chartData.verticalArrayFun,
                 fill: false,
                 borderColor: "rgb(182, 245, 66)",
                 backgroundColor: "rgb(182, 245, 66)",

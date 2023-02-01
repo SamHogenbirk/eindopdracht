@@ -1,13 +1,10 @@
-import React from 'react';
 // import Test from "./components/Test"
 import MainPage from './pages/MainPage'
 import Student from './pages/Student'
 import { Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 
-
 function App() {
-
 
   return (
     <>

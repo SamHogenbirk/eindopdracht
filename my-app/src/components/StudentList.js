@@ -1,13 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { filterStudent } from '../features/DataSlice'
+import { useSelector } from "react-redux"
 
-const StudentList = (props) => {
-    console.log(props)
+
+const StudentList = () => {
 
     const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
     const dispatch = useDispatch()
+    const array = (useSelector((state) => state.data.studentName))
 
     const [names, setNames] = useState([])
 
@@ -24,7 +26,7 @@ const StudentList = (props) => {
         <div className='dropdown-content-list' >
             <ul className='dropdown-ul'>
 
-                {props.data.map((item) =>
+                {array.map((item) =>
                     <li className="li-item" key={item} >
                         <Link to={`/student/${item}`}>{item} </Link>
                         <label>

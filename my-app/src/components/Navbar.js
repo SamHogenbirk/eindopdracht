@@ -1,13 +1,9 @@
-import React from "react"
 import StudentList from "./StudentList"
-import { useSelector } from "react-redux"
 import Filters from "./Filters"
 import { Link } from "react-router-dom"
 
-
 const Navbar = () => {
 
-    const arrays = useSelector((state) => state.array)
     const isHome = window.location.pathname === "/"
 
     return (
@@ -19,7 +15,7 @@ const Navbar = () => {
                     <div className="button-wrapper-list">
                         <button className="dropbtn-list ">Student list</button>
                         <div>
-                            <StudentList data={arrays.studentName} />
+                            <StudentList/>
                         </div>
                     </div>
                 </span>

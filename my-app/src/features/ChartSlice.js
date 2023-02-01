@@ -15,14 +15,10 @@ const ChartSlice = createSlice({
 
         chartData: (state, action) => {
 
-            // console.log(action.payload)
-
             state.title = action.payload.title
             state.horizontalArray = action.payload.horizontal
             state.verticalArrayDifficulty = action.payload.verticalD
             state.verticalArrayFun = action.payload.verticalF
-
-            // console.log(current(state))
 
             return state
 

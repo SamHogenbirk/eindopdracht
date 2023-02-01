@@ -6,38 +6,56 @@ import studentData from "../app/studentData";
 
 let isSorted = false
 
+const initialState = {
+    all: studentData,
+    ar: [],
+    assignment: [...new Set(studentData.map(item => item.assignment))],
+    studentName: [...new Set(studentData.map(item => item.studentName))],
+}
+
 const DataSlice = createSlice({
     name: "data",
-    initialState: { studentData },
+    initialState,
 
     reducers: {
 
-        // sortList: (state, action) => {
+        sortList: (state, action) => {
 
-        //     studentData > state ? state = state : state = [...studentData]
+            const res = state.all.map(item => item)
+            if (isSorted) {
+                res.reverse()
+            }
+            const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
+            isSorted = !isSorted
+            state.all = sortedList
 
-        //     const res = state.studentData.map(_ => _)
-        //     const sortedList = isSorted ?
-        //         res.reverse() :
-        //         res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
-        //     isSorted = !isSorted
-        //     console.log(sortedList)
-        //     return { studentData: sortedList }
+            return state
 
-        // },
+        },
 
         filterStudent: (state, action) => {
 
-            state = [...studentData]
+            state.all = [...studentData]
             const name = action.payload
-            console.log(name)
-            // console.log(current(state.studentData))
-            return { studentData: state.filter((student) => !name.includes(student.studentName)) }
+            state.all = state.all.filter((student) => !name.includes(student.studentName))
+            // console.log(current(state))
+
+            return state
 
         },
+
+        uniqueArray: (state, action) => {
+
+            // state.ar = []
+            // const unique = [...new Set(studentData.map(item => item[action.payload]))]
+            // state.ar.push(unique)
+
+            // return state
+
+        }
 
     }
 })
 
-export const { addStudent, removeStudent, filterStudent, sortList } = DataSlice.actions
+export const { filterStudent, sortList, uniqueArray } = DataSlice.actions
 export default DataSlice.reducer
