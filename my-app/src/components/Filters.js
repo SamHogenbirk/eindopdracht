@@ -1,17 +1,21 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RadioButtons from "./RadioButtons";
 import { radioResult } from "../features/FilterSlice";
-import { sortList } from "../features/ChartSlice";
+import { sortChart } from "../features/ChartSlice";
+import { useEffect } from "react";
+
 
 
 const Filters = () => {
 
+    const data = useSelector(state => state.chart.isSorted)
     const dispatch = useDispatch()
+    let x = ""
 
     const handleChange = (e) => {
 
-        console.log(e.target.name)
+        console.log(e.target.value)
 
         switch (e.target.name) {
             case "chartType":
@@ -19,14 +23,16 @@ const Filters = () => {
                 dispatch(radioResult({ filter: e.target.value }))
                 break;
 
-            case "sortButton":
-
-                // console.log(e.target.value)
-                dispatch(sortList(e.target.value))
+            case "sort":
+                x = e.target.value
                 break;
 
         }
     }
+
+    let choiceBtn = document.createElement("BUTTON")
+    choiceBtn.innerText = "sort by name"
+    choiceBtn.className = "chart-button"
 
 
 
@@ -49,7 +55,7 @@ const Filters = () => {
                 break;
 
             case "sortButton":
-                dispatch(sortList(e.target.value))
+                dispatch(sortChart(x))
                 break;
         }
     }
@@ -69,12 +75,24 @@ const Filters = () => {
                         {/* <RadioButtons props={"sort"} handleChange={handleChange} /> */}
                     </li>
                     <li>
+                        <select name="sort" onChange={handleChange}>
+                            <option value="">sort by default</option>
+                            <option value="category">sort by assignment</option>
+                            <option value="category">sort by name</option>
+                            <option value="difficulty">sort by difficulty</option>
+                            <option value="fun">sort by fun</option>
+                        </select>
                         <label>
-                            <button className="sort-button" name="sortButton" value="assignment" onClick={handleClick}>sort by assignment</button>
+                            <button className="sort-button" name="sortButton" value="sort" onClick={handleClick}>sort!</button>
                         </label>
-                        <label>
+
+                    </li>
+                    <li>
+
+
+                        {/* <label>
                             <button className="sort-button" name="sortButton" value="studentName" onClick={handleClick}>sort by name</button>
-                        </label>
+                        </label> */}
                     </li>
                 </ul>
             </div>

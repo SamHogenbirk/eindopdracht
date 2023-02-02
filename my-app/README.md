@@ -5,8 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Please install
 
 
-Chart JS:
-..
+Chart JS v2:
+npm install --save chart.js react-chartjs-2 
 
 Redux@toolkit:
 ..

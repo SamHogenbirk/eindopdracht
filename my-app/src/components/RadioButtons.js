@@ -6,32 +6,7 @@ const RadioButtons = ({ handleChange, props }) => {
 
         if (input === "chartType") {
 
-            return (
-                <div className="radio-button">
-                    <label> Average per:
 
-                        <label> Assignment:
-                            <input
-                                defaultChecked="checked"
-                                onChange={handleChange}
-                                type="radio"
-                                name="chartType"
-                                value="assignment">
-                            </input>
-                        </label>
-
-                        <label> Student:
-                            <input
-                                onChange={handleChange}
-                                type="radio"
-                                name="chartType"
-                                value="student">
-                            </input>
-                        </label>
-                    </label>
-                </div>
-
-            )
         } else if (input === "sort") {
             // return (
 
@@ -63,7 +38,29 @@ const RadioButtons = ({ handleChange, props }) => {
     }
     return (
         <>
-            {render(props)}
+            <div className="radio-button">
+                <label> Average per:
+
+                    <label> Assignment:
+                        <input
+                            defaultChecked="checked"
+                            onChange={handleChange}
+                            type="radio"
+                            name="chartType"
+                            value="assignment">
+                        </input>
+                    </label>
+
+                    <label> Student:
+                        <input
+                            onChange={handleChange}
+                            type="radio"
+                            name="chartType"
+                            value="student">
+                        </input>
+                    </label>
+                </label>
+            </div>
         </>
     )
 }

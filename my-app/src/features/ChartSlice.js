@@ -1,13 +1,17 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
-const isSorted = false
+let isSorted = false
 
 const initialState = {
     title: "",
     horizontalArray: [],
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
+    isSorted: isSorted
+
 }
+
+
 
 const ChartSlice = createSlice({
     name: "chart",
@@ -25,54 +29,46 @@ const ChartSlice = createSlice({
 
         },
 
-        sortList: (state, action) => {
+        sortChart: (state, action) => {
 
-            console.log(action.payload)
-            console.log(current(state.horizontalArray))
+            const sortBy = action.payload
+            console.log(sortBy)
 
-            
-            
-            // const res = state.all.map(item => item)
-            // console.log(isSorted)
-            // // if (isSorted) {
-            // //     res.reverse()
-            // // }
-            // // const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
-            // const sortedList = isSorted ? res.reverse() : res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
+            const res = { ...state }
 
-            // isSorted = !isSorted
-            // state.all = sortedList
+            const sortArray = state.horizontalArray.map((item, i) => {
 
-            // return state
+                return {
+                    difficulty: state.verticalArrayDifficulty[i],
+                    fun: state.verticalArrayFun[i],
+                    category: item
+                };
+            });
+
+            const sortedArray = isSorted ?
+                sortArray.reverse() :
+                sortArray.sort((a, b) => (a[action.payload] < b[action.payload]) ? -1 : 1)
+
+            isSorted = !isSorted
+
+            const [newArrayFun, newArrayDifficulty, newArrayCategory] = sortedArray.reduce((acc, cur) => {
+                acc[0].push(cur.fun);
+                acc[1].push(cur.difficulty);
+                acc[2].push(cur.category);
+                return acc;
+            }, [[], [], []]);
+
+            state.horizontalArray = newArrayCategory
+            state.verticalArrayDifficulty = newArrayDifficulty
+            state.verticalArrayFun = newArrayFun
+
+            // console.log(current(state))
+
+            return state
+
         },
     }
 })
 
-export const { chartData, sortList } = ChartSlice.actions
+export const { chartData, sortChart } = ChartSlice.actions
 export default ChartSlice.reducer
-
-// labels: props.data.horizontalArray, //horizontal axis
-
-// datasets: [
-//     {
-//         label: "Difficulty rating",
-//         data: props.data.verticalArrayDifficulty, //vertical axis
-//         backgroundColor: props.data.verticalArrayDifficulty
-//             .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
-
-//         borderWidth: 1,
-//         barPercentage: 1,
-//         categoryPercentage: 0.7,
-//         borderRadius: 10,
-//     },
-//     {
-//         label: "Fun rating",
-//         data: props.data.verticalArrayFun, //vertical axis
-//         backgroundColor: props.data.verticalArrayFun
-//             .map(item => item < 2 ? "red" : "rgb(182, 245, 66)"),
-
-//         borderWidth: 1,
-//         barPercentage: 1,
-//         categoryPercentage: 0.7,
-//         borderRadius: 10,
-//     }],       
