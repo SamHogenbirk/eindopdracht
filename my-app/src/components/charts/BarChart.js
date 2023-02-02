@@ -10,6 +10,7 @@ function BarChart() {
     const options = {
         responsive: true,
         plugins: {
+
             display: true,
             legend: {
 
@@ -20,10 +21,11 @@ function BarChart() {
                 },
 
                 labels: {
-                  
-                    generateLabels: (chart) => {
 
+                    useBorderRadius: true,
+                    generateLabels: (chart) => {
                         return chart.data.datasets.map((dataset, i) => ({
+                            borderRadius: 5,
                             text: dataset.label,
                             strokeStyle: "white",
                             fillStyle: dataset.backgroundColor[i] === "red" ? "rgb(66, 135, 245)" : dataset.backgroundColor[i],
@@ -60,7 +62,7 @@ function BarChart() {
                 borderRadius: 10,
             },
             {
-                
+
                 label: "Fun rating",
                 data: chartData.verticalArrayFun, //vertical axis
                 backgroundColor: chartData.verticalArrayFun

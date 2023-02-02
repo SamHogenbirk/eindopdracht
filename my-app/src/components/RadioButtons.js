@@ -33,32 +33,32 @@ const RadioButtons = ({ handleChange, props }) => {
 
             )
         } else if (input === "sort") {
-            return (
+            // return (
 
-                <div className="sort-checkbox">
-                    <label htmlFor="select">Sort by:
-                        <label className="sort-checkbox" > Standaart
-                            <input type="radio" defaultChecked={true} value="" name="sortRadio" onChange={handleChange} />
-                        </label>
+            //     <div className="sort-checkbox">
+            //         <label htmlFor="select">Sort by:
+            //             <label className="sort-checkbox" > Standaart
+            //                 <input type="radio" defaultChecked={true} value="" name="sortRadio" onChange={handleChange} />
+            //             </label>
 
-                        <label className="sort-checkbox"> Naam
-                            <input type="radio" value="studentName" name="sortRadio" onChange={handleChange} />
-                        </label >
+            //             <label className="sort-checkbox"> Naam
+            //                 <input type="radio" value="studentName" name="sortRadio" onChange={handleChange} />
+            //             </label >
 
-                        <label className="sort-checkbox"> Opdracht
-                            <input type="radio" value="assignment" name="sortRadio" onChange={handleChange} />
-                        </label >
+            //             <label className="sort-checkbox"> Opdracht
+            //                 <input type="radio" value="assign" name="sortRadio" onChange={handleChange} />
+            //             </label >
 
-                        <label className="sort-checkbox"> Difficulty
-                            <input type="radio" value="difficulty" name="sortRadio" onChange={handleChange} />
-                        </label >
+            //             <label className="sort-checkbox"> Difficulty
+            //                 <input type="radio" value="difficulty" name="sortRadio" onChange={handleChange} />
+            //             </label >
 
-                        <label className="sort-checkbox"> fun
-                            <input type="radio" value="fun" name="sortRadio" onChange={handleChange} />
-                        </label>
-                    </label>
-                </div>
-            )
+            //             <label className="sort-checkbox"> fun
+            //                 <input type="radio" value="fun" name="sortRadio" onChange={handleChange} />
+            //             </label>
+            //         </label>
+            //     </div>
+            // )
         }
     }
     return (

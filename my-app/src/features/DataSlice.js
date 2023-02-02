@@ -11,6 +11,7 @@ const initialState = {
     ar: [],
     assignment: [...new Set(studentData.map(item => item.assignment))],
     studentName: [...new Set(studentData.map(item => item.studentName))],
+   
 }
 
 const DataSlice = createSlice({
@@ -19,19 +20,22 @@ const DataSlice = createSlice({
 
     reducers: {
 
-        sortList: (state, action) => {
+        // sortList: (state, action) => {
 
-            const res = state.all.map(item => item)
-            if (isSorted) {
-                res.reverse()
-            }
-            const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
-            isSorted = !isSorted
-            state.all = sortedList
+        //     console.log(action.payload)
+        //     const res = state.all.map(item => item)
+        //     console.log(isSorted)
+        //     // if (isSorted) {
+        //     //     res.reverse()
+        //     // }
+        //     // const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
+        //     const sortedList = isSorted ? res.reverse() : res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
 
-            return state
+        //     isSorted = !isSorted
+        //     state.all = sortedList
 
-        },
+        //     return state
+        // },
 
         filterStudent: (state, action) => {
 

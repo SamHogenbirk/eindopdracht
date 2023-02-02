@@ -1,5 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
+const isSorted = false
 
 const initialState = {
     title: "",
@@ -22,11 +23,32 @@ const ChartSlice = createSlice({
 
             return state
 
-        }
+        },
+
+        sortList: (state, action) => {
+
+            console.log(action.payload)
+            console.log(current(state.horizontalArray))
+
+            
+            
+            // const res = state.all.map(item => item)
+            // console.log(isSorted)
+            // // if (isSorted) {
+            // //     res.reverse()
+            // // }
+            // // const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
+            // const sortedList = isSorted ? res.reverse() : res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
+
+            // isSorted = !isSorted
+            // state.all = sortedList
+
+            // return state
+        },
     }
 })
 
-export const { chartData } = ChartSlice.actions
+export const { chartData, sortList } = ChartSlice.actions
 export default ChartSlice.reducer
 
 // labels: props.data.horizontalArray, //horizontal axis

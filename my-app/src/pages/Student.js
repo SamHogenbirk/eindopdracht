@@ -32,9 +32,6 @@ const Student = () => {
                 <BarChart />
             </div>
 
-            <div className='chart-wrapper'>
-                <LineChart />
-            </div>
         </>
     )
 }

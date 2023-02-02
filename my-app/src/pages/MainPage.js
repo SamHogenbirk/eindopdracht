@@ -14,14 +14,10 @@ const MainPage = () => {
     const category = (input) => [...new Set(data.map(item => item[input]))]
 
     const AverageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
-
-
         const averageRating = category(inputB).map((item) => {
-
             const ratingPerInput =
                 data.filter((data) => data[inputB] === item)
                     .map((data) => data[inputA])
-
             const averageRating = ratingPerInput.reduce((a, b) => a + b) / ratingPerInput.length
 
             return averageRating
@@ -29,11 +25,8 @@ const MainPage = () => {
         return averageRating.map(item => Math.round(item * 10) / 10)
     }//get average rating per category
 
-
-
     const funRatingAssignment = AverageRating("fun", "assignment")
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
-
 
     useEffect(() => {
 
@@ -46,14 +39,14 @@ const MainPage = () => {
                 horizontal: category("assignment"),
                 verticalD: difficultyRatingAssignment,
                 verticalF: funRatingAssignment,
-                title: "Difficulty and enjoyment rating per Assignment"
+                title: "Difficulty and enjoyment rating per assignment"
             }))
         } else {
             dispatch(chartData({
                 horizontal: category("studentName"),
                 verticalD: difficultyRatingStudent,
                 verticalF: funRatingStudent,
-                title: "Difficulty and enjoyment rating per Student"
+                title: "Difficulty and enjoyment rating per student"
             }))
         }
 
@@ -65,7 +58,6 @@ const MainPage = () => {
             <Navbar />
 
             <div className="chart-wrapper" >
-
                 <div className="bar-chart">
                     <BarChart />
                 </div>
