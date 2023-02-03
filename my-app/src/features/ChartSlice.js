@@ -1,5 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
+
 let isSorted = false
 
 const initialState = {
@@ -7,8 +8,8 @@ const initialState = {
     horizontalArray: [],
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
-    isSorted: isSorted
-
+    // isSorted: isSorted
+    saveParam: ""
 }
 
 
@@ -31,10 +32,13 @@ const ChartSlice = createSlice({
 
         sortChart: (state, action) => {
 
-            const sortBy = action.payload
-            console.log(sortBy)
+            let sortBy = action.payload
 
-            const res = { ...state }
+            if (sortBy !== state.sortParam) {
+                isSorted = false
+            }
+            state.sortParam = sortBy
+            //prevent the array from being sorted in reverse order first
 
             const sortArray = state.horizontalArray.map((item, i) => {
 
@@ -42,27 +46,26 @@ const ChartSlice = createSlice({
                     difficulty: state.verticalArrayDifficulty[i],
                     fun: state.verticalArrayFun[i],
                     category: item
-                };
-            });
+                }
+            })//split the arrays into objects
 
             const sortedArray = isSorted ?
                 sortArray.reverse() :
-                sortArray.sort((a, b) => (a[action.payload] < b[action.payload]) ? -1 : 1)
-
+                sortArray.sort((a, b) => (a[sortBy] < b[sortBy]) ? -1 : 1)
             isSorted = !isSorted
+            //sort the array by the value of the action.payload
 
             const [newArrayFun, newArrayDifficulty, newArrayCategory] = sortedArray.reduce((acc, cur) => {
                 acc[0].push(cur.fun);
                 acc[1].push(cur.difficulty);
                 acc[2].push(cur.category);
                 return acc;
-            }, [[], [], []]);
+            }, [[], [], []]) //split the sorted array back into 3 arrays
 
             state.horizontalArray = newArrayCategory
             state.verticalArrayDifficulty = newArrayDifficulty
             state.verticalArrayFun = newArrayFun
-
-            // console.log(current(state))
+            //set the state to the new sorted arrays
 
             return state
 

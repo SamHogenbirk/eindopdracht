@@ -38,7 +38,7 @@
 
 .li-item {
   padding: 3px;
-  min-width: 200px;
+  min-width: 100px;
 }
 .li-item a {
   text-decoration: none;
@@ -163,12 +163,13 @@
   display: none;
 }
 
+.student-checkbox {
+  float: right;
+  margin-left: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.sort-checkbox {
-  display: block;
 }/*# sourceMappingURL=App.css.map */

@@ -52,7 +52,9 @@
 
 .li-item {
     padding: 3px;
-    min-width: 200px;
+    min-width: 100px;
+    // width: fit-content;
+   
 
     a {
         text-decoration: none;

@@ -1,27 +1,10 @@
 @import "./navbar";
 @import "./charts";
 @import "./variables";
-
-
-@mixin flexCenter() {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
+@import "./buttons";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-// .checkbox {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-.sort-checkbox {
-  display:block;  
 }
