@@ -168,6 +168,53 @@
   margin-left: 10px;
 }
 
+.Switch-chart-wrapper, .sort-wrapper, .radio-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  border: 1px solid rgb(243, 237, 237);
+  border-radius: 10px;
+  width: 380px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 4px;
+}
+.Switch-chart-wrapper .chart-button, .sort-wrapper .chart-button, .sort-wrapper .sort-button, .radio-wrapper .chart-button {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: rgb(66, 135, 245);
+  text-align: center;
+  position: relative;
+  margin-left: 5px;
+}
+.Switch-chart-wrapper .chart-button:hover, .sort-wrapper .chart-button:hover, .sort-wrapper .sort-button:hover, .radio-wrapper .chart-button:hover {
+  border-color: rgb(182, 245, 66);
+}
+
+.radio-wrapper .radio-button {
+  margin-left: 10px;
+}
+
+.sort-wrapper .sort-button {
+  position: relative;
+  height: 35px;
+  padding-top: 8px;
+}
+
+@media all and (max-width: 30em) {
+  a.button7 {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
 * {
   margin: 0;
   padding: 0;

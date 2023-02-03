@@ -6,3 +6,70 @@
 
 }
 
+.Switch-chart-wrapper {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    border: 1px solid rgb(243, 237, 237);
+    border-radius: $border-radius;
+    width: 380px;
+    height: fit-content;
+    padding: 4px;
+
+    .chart-button {
+        display: inline-block;
+        padding: 0.7em 1.7em;
+        border: 1px solid white;
+        border-radius: $border-radius;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: #FFFFFF;
+        background-color: $blue;
+        text-align: center;
+        position: relative;
+        margin-left: 5px;
+
+        &:hover {
+            border-color: $green;
+        }
+    }
+
+}
+
+.radio-wrapper {
+    @extend .Switch-chart-wrapper;
+
+    .radio-button {
+        margin-left: 10px;
+    }
+
+}
+
+.sort-wrapper {
+    @extend .Switch-chart-wrapper;
+
+    .sort-button {
+        @extend .chart-button;
+        position: relative;
+        height: 35px;
+        padding-top: 8px;
+    }
+
+}
+
+
+
+
+
+
+
+
+@media all and (max-width:30em) {
+    a.button7 {
+        display: block;
+        margin: 0.4em auto;
+    }
+}

@@ -34,8 +34,11 @@ const ChartSlice = createSlice({
 
             let sortBy = action.payload
 
+
             if (sortBy !== state.sortParam) {
                 isSorted = false
+            } else if (action.payload === "") {
+                return state
             }
             state.sortParam = sortBy
             //prevent the array from being sorted in reverse order first

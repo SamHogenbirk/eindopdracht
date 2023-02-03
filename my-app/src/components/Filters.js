@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import RadioButtons from "./RadioButtons";
+import FilterButtons from "./FilterButtons";
 import { radioResult } from "../features/FilterSlice";
 import { sortChart } from "../features/ChartSlice";
 
@@ -43,22 +43,23 @@ const Filters = () => {
             <div className="dropdown-content-filter">
                 <ul className="dropdown-ul">
                     <li>
-                        <select name="sort">
-                            <option value="">--choose an option--</option>
-                            <option value="category">sort by assignment</option>
-                            <option value="category">sort by name</option>
-                            <option value="difficulty">sort by difficulty</option>
-                            <option value="fun">sort by fun</option>
-                        </select>
-                        <label>
-                            <button className="sort-button" name="sortButton" value="sort" onClick={handleClick}>sort!</button>
-                        </label>
+                        <FilterButtons
+                            data={"sort"}
+                            handleClick={handleClick} />
                     </li>
                     <li>
-                        <RadioButtons data={"chartType"} handleChange={handleChange} />
+                        <div className="radio-wrapper">
+                            <FilterButtons
+                                data={"chartType"}
+                                handleChange={handleChange}
+                            />
+                        </div>
                     </li>
                     <li>
-                        <button className="chart-button" name="switch" onClick={handleClick}>switch chart</button>
+                        <FilterButtons
+                            data={"switchChart"}
+                            handleClick={handleClick}
+                        />
                     </li>
                 </ul>
             </div>
