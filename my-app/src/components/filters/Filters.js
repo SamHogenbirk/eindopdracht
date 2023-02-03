@@ -1,18 +1,25 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterButtons from "./FilterButtons";
-import { radioResult } from "../features/FilterSlice";
-import { sortChart } from "../features/ChartSlice";
+import { radioResult } from "../../features/FilterSlice";
+import { sortChart } from "../../features/ChartSlice";
 
 const Filters = () => {
 
+    const isSorted = useSelector((state) => state.chart.isSorted)
     const dispatch = useDispatch()
 
+
     const handleChange = (e) => {
+
         dispatch(radioResult({ filter: e.target.value }))
     }
 
     const handleClick = (e) => {
+
+        const but = document.querySelector(".sort-button")
+        const x = but.innerHTML
+        console.log()
 
         switch (e.target.name) {
 
@@ -34,9 +41,16 @@ const Filters = () => {
                 const select = document.querySelector("select")
                 const selectedOption = select.options[select.selectedIndex]
                 dispatch(sortChart(selectedOption.value))
+
+                if (x === "Sort asc") {
+                    but.innerHTML = "Sort desc"
+                } else if (x === "Sort desc") {
+                    but.innerHTML = "Sort asc"
+                }
                 break;
         }
     }
+
 
     return (
         <>
@@ -66,6 +80,7 @@ const Filters = () => {
 
         </>
     )
+
 }
 
 export default Filters

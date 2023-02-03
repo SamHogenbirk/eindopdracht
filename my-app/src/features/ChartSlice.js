@@ -8,7 +8,7 @@ const initialState = {
     horizontalArray: [],
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
-    // isSorted: isSorted
+    isSorted: isSorted,
     saveParam: ""
 }
 
@@ -34,7 +34,6 @@ const ChartSlice = createSlice({
 
             let sortBy = action.payload
 
-
             if (sortBy !== state.sortParam) {
                 isSorted = false
             } else if (action.payload === "") {
@@ -56,6 +55,7 @@ const ChartSlice = createSlice({
                 sortArray.reverse() :
                 sortArray.sort((a, b) => (a[sortBy] < b[sortBy]) ? -1 : 1)
             isSorted = !isSorted
+
             //sort the array by the value of the action.payload
 
             const [newArrayFun, newArrayDifficulty, newArrayCategory] = sortedArray.reduce((acc, cur) => {
@@ -69,6 +69,9 @@ const ChartSlice = createSlice({
             state.verticalArrayDifficulty = newArrayDifficulty
             state.verticalArrayFun = newArrayFun
             //set the state to the new sorted arrays
+
+            state.isSorted = isSorted
+            //keep track of the sort state in (filer) component
 
             return state
 

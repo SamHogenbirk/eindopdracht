@@ -28,8 +28,14 @@ const Student = () => {
         <>
             <Navbar />
 
-            <div className='chart-wrapper'>
-                <BarChart />
+            <div className="chart-wrapper" >
+                <div className="bar-chart">
+                    <BarChart />
+                </div>
+
+                <div className="line-chart">
+                    <LineChart />
+                </div>
             </div>
 
         </>
@@ -38,31 +44,3 @@ const Student = () => {
 
 export default Student
 
-// const arrays = useSelector((state) => state.array)
-
-    // const title = `Difficulty and enjoyment rating for ${name}`
-    // const horizontalArray = [...new Set(data.map(item => item.assignment))]
-    // const verticalArrayDifficulty = ratingPerStudent(data, name).map(item => item.difficulty)
-    // const verticalArrayFun = ratingPerStudent(data, name).map(item => item.fun)
-
-    // const [sort, setSort] = useState({
-    //     horizontal: horizontalArray,
-    //     verticalD: verticalArrayDifficulty,
-    //     verticalF: verticalArrayFun,
-    //     title: title
-
-    // })
-
-    // if (props === "assignment") {
-    //     setSort({
-    //         horizontal: horizontalArray.sort((a, b) => (a < b ? -1 : 1)),
-    //     })
-
-
-    // className="bar-chart"
-    //                 data={{
-    //                     title,
-    //                     horizontalArray,
-    //                     verticalArrayDifficulty,
-    //                     verticalArrayFun,
-    //                 }} 

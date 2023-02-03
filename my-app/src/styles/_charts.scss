@@ -1,4 +1,5 @@
-.chart {
+.bar-chart {
+    animation: fadeOut 0.5s;
     margin: 0px;
     height: fit-content;
     width: 100%;
@@ -23,6 +24,21 @@
 }
 
 .line-chart {
+
     display: none;
+    animation: fadeOut 0.8s;
 }
 
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

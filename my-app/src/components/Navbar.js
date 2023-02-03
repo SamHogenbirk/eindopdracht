@@ -1,11 +1,11 @@
 import StudentList from "./StudentList"
-import Filters from "./Filters"
+import Filters from "./filters/Filters"
 import { Link } from "react-router-dom"
 
 const Navbar = () => {
 
     const isHome = window.location.pathname === "/"
-
+   
     return (
         <>
             <div className="navbar">
@@ -15,7 +15,7 @@ const Navbar = () => {
                     <div className="button-wrapper-list">
                         <button className="dropbtn-list ">Student list</button>
                         <div>
-                            <StudentList/>
+                            <StudentList />
                         </div>
                     </div>
                 </span>
@@ -23,7 +23,9 @@ const Navbar = () => {
 
                 <span className="button-wrapper-home" style={isHome ? { display: "none" } : { display: "block" }}  >
                     <Link to="/">
-                        <button type="button" className="home-button">-home-</button>
+                        <button
+                            type="button"
+                            className="home-button">Ho--Me</button>
                     </Link>
                 </span>
 

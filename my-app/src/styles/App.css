@@ -6,6 +6,8 @@
 }
 
 .border-top {
+  -webkit-animation: fadeIn 2s;
+          animation: fadeIn 2s;
   position: relative;
   width: 100%;
   height: 5px;
@@ -23,35 +25,19 @@
 }
 
 .dropdown-content-list {
+  -webkit-animation: fadeIn 0.8s;
+          animation: fadeIn 0.8s;
   display: none;
   position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.85);
   border: 1px solid rgb(66, 135, 245);
   border-top: none;
   border-radius: 0 0 10px 10px;
   left: calc(25% - 200px);
   width: 400px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   top: 5px;
   z-index: 1;
-}
-
-.li-item {
-  padding: 3px;
-  min-width: 100px;
-}
-.li-item a {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  font-family: inherit;
-  padding: 5px;
-}
-.li-item:hover {
-  border-bottom: 1px solid rgb(66, 135, 245);
-  margin-bottom: 2px;
-  margin-left: 1px;
-  color: white;
 }
 
 .dropdown-ul {
@@ -62,14 +48,43 @@
   flex-direction: column;
   background-color: white;
   opacity: 0.8;
-  border-radius: 10px;
+  margin-left: 25px;
+  margin-bottom: 7px;
   margin-top: 50px;
-  margin-bottom: 0px;
-  padding: 0px 3px 5px 3px;
   list-style-type: none;
+  padding: 4px;
+  border: 1px solid rgb(243, 237, 237);
+  border-radius: 10px;
+  width: 350px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.li-item {
+  padding: 3px;
+  min-width: 100px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.li-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  padding: 5px;
+}
+.li-item:hover {
+  border-bottom: 1px solid rgb(66, 135, 245);
+  margin-bottom: 2px;
+  margin-left: 1px;
 }
 
 .dropbtn-list, .dropbtn-filter {
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
   font-size: 16px;
   border: 1px solid rgb(66, 135, 245);
   font-size: 16px;
@@ -84,24 +99,33 @@
 }
 
 .home-button {
-  font-style: italic;
-  color: rgb(16, 15, 15);
+  font-style: bold;
+  color: white;
+  padding-left: 2px;
   border-left: 1px solid rgb(66, 135, 245);
   border-right: 1px solid rgb(182, 245, 66);
+  border-bottom: white;
   border-top: none;
-  border-bottom: none;
-  height: 20px;
+  border-radius: 0 0 10px 10px;
+  height: 30px;
   cursor: pointer;
-  font-family: inherit;
-  padding-top: 10px;
-  font-size: 15px;
-  border-radius: 0 0 10 10;
   font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  border-radius: 0 0 10 10;
   width: 100px;
-  background: white;
+  background: linear-gradient(90deg, rgb(66, 135, 245) 50%, rgb(182, 245, 66) 50%);
+}
+.home-button:hover {
+  color: rgba(235, 82, 82, 0.9);
+  font-weight: 700;
+  font-style: italic;
+  border-color: rgba(235, 82, 82, 0.9);
 }
 
 .button-wrapper-home {
+  -webkit-animation: fadeIn 0.8s;
+          animation: fadeIn 0.8s;
   display: "block";
   position: absolute;
   left: calc(50% - 50px);
@@ -112,7 +136,9 @@
 }
 
 .dropdown-content-filter {
-  visibility: hidden;
+  -webkit-animation: fadeIn 0.6s;
+          animation: fadeIn 0.6s;
+  display: none;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.85);
   border: 1px solid rgb(182, 245, 66);
@@ -135,10 +161,29 @@
 }
 
 .button-wrapper-filter:hover .dropdown-content-filter {
-  visibility: visible;
+  display: block;
 }
 
-.chart {
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.bar-chart {
+  -webkit-animation: fadeOut 0.5s;
+          animation: fadeOut 0.5s;
   margin: 0px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -161,8 +206,33 @@
 
 .line-chart {
   display: none;
+  -webkit-animation: fadeOut 0.8s;
+          animation: fadeOut 0.8s;
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .student-checkbox {
   float: right;
   margin-left: 10px;

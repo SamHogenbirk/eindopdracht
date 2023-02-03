@@ -34,7 +34,11 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                 )
 
             case "sort":
+
+
+
                 return (
+
                     <div className="sort-wrapper">
                         <select name="sort">
                             <option value="">--choose an option--</option>
@@ -45,14 +49,17 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                         </select>
                         <label>
                             <button
+                                id="x"
                                 className="sort-button"
                                 name="sortButton"
                                 value="sort" onClick={handleClick}>
-                                sort!
+                                Sort asc
                             </button>
                         </label>
                     </div>
+
                 )
+
 
             case "switchChart":
                 return (
@@ -65,8 +72,12 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                         </button>
                     </div>
                 )
+
         }
+
     }
+
+
     return (
         <>
             {render(data)}

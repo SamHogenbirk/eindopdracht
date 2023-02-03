@@ -4,7 +4,7 @@ import LineChart from "../components/charts/LineChart"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { chartData } from "../features/ChartSlice"
-import { uniqueArray } from "../features/ArraySlice"
+
 
 const MainPage = () => {
 
@@ -72,47 +72,3 @@ const MainPage = () => {
 }
 
 export default MainPage
-
-
-// useEffect(() => {
-//     dispatch(chartData({
-//         horizontal: category("assignment"),
-//         verticalD: difficultyRatingAssignment,
-//         verticalF: funRatingAssignment,
-//         title: "Difficulty and enjoyment rating per Assignment"
-//     }))
-// }, [dispatch])
-
-
-// const [cat, setCat] = useState({
-//     horizontal: category("assignment"),
-//     verticalD: difficultyRatingAssignment,
-//     verticalF: funRatingAssignment,
-//     title: "assignment"
-// }
-
-// if (filterData === "assignment") {
-//     setCat({
-//         horizontal: category("assignment"),
-//         verticalD: difficultyRatingAssignment,
-//         verticalF: funRatingAssignment,
-//         title: "Assignment"
-//     })
-// } else {
-//     setCat({
-//         horizontal: category("studentName"),
-//         verticalD: difficultyRatingStudent,
-//         verticalF: funRatingStudent,
-//         title: "Student"
-//     })
-// }
-
-// let chartDatax = {
-//     title: `Difficulty and enjoyment rating per ${cat.title}`,
-//     horizontalArray: cat.horizontal,
-//     verticalArrayDifficulty: cat.verticalD,
-//     verticalArrayFun: cat.verticalF,
-// }
-
-
-{/* data={chartDatax} */ }
