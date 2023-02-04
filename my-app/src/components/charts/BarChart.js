@@ -76,8 +76,8 @@ function BarChart() {
     }
 
     return (
+
         <div className="bar-chart" >
-            <h2 className="chart-title" >{options.plugins.legend.title.text}</h2>
             <Bar
                 data={barData}
                 options={options}

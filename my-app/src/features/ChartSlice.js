@@ -4,15 +4,13 @@ import { createSlice, current } from "@reduxjs/toolkit";
 let isSorted = false
 
 const initialState = {
-    title: "",
+
     horizontalArray: [],
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
     isSorted: isSorted,
     saveParam: ""
 }
-
-
 
 const ChartSlice = createSlice({
     name: "chart",
@@ -21,10 +19,10 @@ const ChartSlice = createSlice({
 
         chartData: (state, action) => {
 
-            state.title = action.payload.title
             state.horizontalArray = action.payload.horizontal
             state.verticalArrayDifficulty = action.payload.verticalD
             state.verticalArrayFun = action.payload.verticalF
+            //set state from mainPage.js
 
             return state
 

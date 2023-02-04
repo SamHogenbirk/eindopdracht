@@ -1,35 +1,67 @@
-.bar-chart {
-    animation: fadeOut 0.5s;
-    margin: 0px;
-    height: fit-content;
-    width: 100%;
-    padding: 5px;
+@import "./variables";
 
+.bar-chart {
+    margin: 0px;
+    padding: 5px;
+}
+
+.line-chart {
+    @extend .bar-chart;
+    display: none;
+    margin-top: 5px;
+    animation: fadeIn 0.8s;
+}
+
+.chart-title-wrapper {
+    border: 1px solid $green;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 10px auto 0px auto;
+    text-align: center;
+    width: 400px;
+    height: 62px;
+    padding-top: 0px;   
+    line-height: 15px;
+
+    hr {
+        background-color: $blue;
+        height: 1px;
+        width: 150px;
+        border: none;
+    }
+
+    &:hover .title-underline {
+        animation: lineScale 2s, fade-out 0.5s;
+        animation-fill-mode: forwards;
+    }
 }
 
 .chart-title {
-
-    position: relative;
     margin: 0px;
     padding: 5px;
     text-align: center;
+}
+
+.chart-title-name {
+    @extend .chart-title;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.title-underline {
+    animation: fadeIn 1s;
 
 }
 
 .chart-wrapper {
-
     position: relative;
     overflow-x: scroll;
-
 }
 
-.line-chart {
-
-    display: none;
-    animation: fadeOut 0.8s;
-}
-
-@keyframes fadeOut {
+@keyframes fadeIn {
     0% {
         opacity: 0;
     }
@@ -40,5 +72,15 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes lineScale {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.5);
     }
 }

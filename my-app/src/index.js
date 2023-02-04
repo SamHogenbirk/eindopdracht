@@ -9,13 +9,13 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>
+
+  <Provider store={Store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+
 );
 
 

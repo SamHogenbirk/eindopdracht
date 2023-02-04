@@ -9,6 +9,10 @@ const StudentList = () => {
     const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
     const dispatch = useDispatch()
     const array = (useSelector((state) => state.data.studentName))
+    const test = useSelector((state) => state.data.combinedStudent)
+
+    // console.log(test)    
+
 
     const [names, setNames] = useState([])
 

@@ -6,9 +6,7 @@ import { sortChart } from "../../features/ChartSlice";
 
 const Filters = () => {
 
-    const isSorted = useSelector((state) => state.chart.isSorted)
     const dispatch = useDispatch()
-
 
     const handleChange = (e) => {
 
@@ -19,7 +17,7 @@ const Filters = () => {
 
         const but = document.querySelector(".sort-button")
         const x = but.innerHTML
-        console.log()
+      
 
         switch (e.target.name) {
 

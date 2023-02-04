@@ -1,17 +1,17 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import studentData from "../app/studentData";
+import mockData from "../app/mockData";
 
 // addStudent: (state, action) => { initialState.studentData.push(action.payload) },
 // removeStudent: (state, action) => { initialState.studentData = initialState.studentData.filter((student) => student.id !== action.payload.id) },
-
-let isSorted = false
 
 const initialState = {
     all: studentData,
     ar: [],
     assignment: [...new Set(studentData.map(item => item.assignment))],
     studentName: [...new Set(studentData.map(item => item.studentName))],
-   
+    combinedStudent: []
+
 }
 
 const DataSlice = createSlice({
@@ -19,23 +19,6 @@ const DataSlice = createSlice({
     initialState,
 
     reducers: {
-
-        // sortList: (state, action) => {
-
-        //     console.log(action.payload)
-        //     const res = state.all.map(item => item)
-        //     console.log(isSorted)
-        //     // if (isSorted) {
-        //     //     res.reverse()
-        //     // }
-        //     // const sortedList = res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
-        //     const sortedList = isSorted ? res.reverse() : res.sort((a, b) => (a[action.payload] < b[action.payload] ? -1 : 1), 0)
-
-        //     isSorted = !isSorted
-        //     state.all = sortedList
-
-        //     return state
-        // },
 
         filterStudent: (state, action) => {
 
@@ -56,10 +39,42 @@ const DataSlice = createSlice({
 
             // return state
 
-        }
+        },
 
+        addMockData: (state, action) => {
+
+            if (state.combinedStudent.length === 0) {
+
+                state.studentName.map((item, i) => {
+
+                    const mockItem = mockData[i]
+                    const newItem = {
+                        id: mockItem.id,
+                        firstName: item,
+                        lastname: mockItem.last_name,
+                        age: mockItem.age,
+                        email: mockItem.email,
+                        gender: mockItem.gender,
+                        photo: mockItem.photo,
+                    }
+
+                    state.combinedStudent.push(newItem)
+
+                })
+
+                return state
+            } else {
+
+                return state
+            }
+
+            // state.combinedStudent =
+            //     [...new Map(state.combinedStudent.map(item => [item.id, item])).values()]
+            // //remove duplicates
+
+        },
     }
 })
 
-export const { filterStudent, sortList, uniqueArray } = DataSlice.actions
+export const { filterStudent, sortList, uniqueArray, addMockData } = DataSlice.actions
 export default DataSlice.reducer

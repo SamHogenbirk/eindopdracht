@@ -4,7 +4,8 @@ import LineChart from "../components/charts/LineChart"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { chartData } from "../features/ChartSlice"
-
+import ChartTitle from "../components/charts/ChartTitle"
+// import { addMockData } from "../features/DataSlice"
 
 const MainPage = () => {
 
@@ -24,6 +25,7 @@ const MainPage = () => {
         })
         return averageRating.map(item => Math.round(item * 10) / 10)
     }//get average rating per category
+
 
     const funRatingAssignment = AverageRating("fun", "assignment")
     const difficultyRatingAssignment = AverageRating("difficulty", "assignment")
@@ -53,9 +55,21 @@ const MainPage = () => {
         // eslint-disable-next-line
     }, [filterData, category])
 
+    useEffect(() => {
+        // dispatch(addMockData())
+        document.getElementById("line").classList.remove('title-underline')
+
+    }, [])
+
+   
     return (
         <>
             <Navbar />
+
+            <ChartTitle
+                data={filterData}
+                title="Difficulty and enjoyment rating per:"
+            />
 
             <div className="chart-wrapper" >
                 <div className="bar-chart">
