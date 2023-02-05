@@ -53,8 +53,9 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                                 className="sort-button"
                                 name="sortButton"
                                 value="sort" onClick={handleClick}>
-                                Sort asc
+                                Sort
                             </button>
+                            <span className="tooltiptext-a">asc</span> <span className="tooltiptext-d">desc</span>
                         </label>
                     </div>
 

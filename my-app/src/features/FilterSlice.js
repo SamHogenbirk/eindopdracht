@@ -4,6 +4,8 @@ const initialState = {
     filter: "assignment",
 }
 
+//sorting in ChartSlice 
+
 const FilterSlice = createSlice({
     name: "filter",
     initialState,

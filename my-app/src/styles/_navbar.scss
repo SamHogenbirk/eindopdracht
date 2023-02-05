@@ -1,12 +1,5 @@
 @import "./variables";
 
-
-// @mixin {
-//     font-size: $font-size;
-//     font-family: $font-family;
-//     font-weight: $font-weight;
-// }
-
 .navbar {
     position: flex;
     top: 0;
@@ -24,8 +17,6 @@
     }
 }
 
-
-
 .dropdown-list {
 
     display: inline-flex;
@@ -39,7 +30,8 @@
 }
 
 .dropdown-content-list {
-    animation: fadeIn 0.8s;
+    animation: growDown 0.6s ease-in-out;
+    transform-origin: top center;
     display: none;
     position: absolute;
 
@@ -111,7 +103,8 @@
 
 .dropbtn-list {
 
-    animation: fadeIn 1s;
+    animation: growDown 0.8s ease-in-out;
+    transform-origin: top center;
     font-size: 16px;
     border: $borderBlue;
     font-size: 16px;
@@ -169,7 +162,8 @@
 
 .dropdown-content-filter {
 
-    animation: fadeIn 0.6s;
+    animation: growDown 0.6s ease-in-out;
+    transform-origin: top center;
     display: none;
     position: absolute;
 
@@ -209,5 +203,22 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes growDown {
+    0% {
+
+        transform: scaleY(0)
+    }
+
+    80% {
+
+        transform: scaleY(1.1)
+    }
+
+    100% {
+
+        transform: scaleY(1)
     }
 }

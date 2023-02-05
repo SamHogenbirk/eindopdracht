@@ -37,12 +37,17 @@ const Student = () => {
         <>
             <Navbar />
 
-            <ChartTitle
-                title="Difficulty and enjoyment rating for:"
-                subtitle={name}
-            />
+            <div className='chart-title-wrapper'>
+                <ChartTitle
+                    title="Difficulty and enjoyment rating for:"
+                    subtitle={name}
+                />
+                <div className='profile-wrapper'>
+                    <StudentProfile data={profile} name={name} />
+                </div>
 
-            <StudentProfile data={profile} name={name} />
+            </div>
+
 
             <div className="chart-wrapper" >
                 <div className="bar-chart">

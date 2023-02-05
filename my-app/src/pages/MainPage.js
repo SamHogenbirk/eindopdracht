@@ -61,16 +61,17 @@ const MainPage = () => {
 
     }, [])
 
-   
+
     return (
         <>
             <Navbar />
 
-            <ChartTitle
-                data={filterData}
-                title="Difficulty and enjoyment rating per:"
-            />
-
+            <div className="chart-title-wrapper">
+                <ChartTitle
+                    data={filterData}
+                    title="Difficulty and enjoyment rating per:"
+                />
+            </div>
             <div className="chart-wrapper" >
                 <div className="bar-chart">
                     <BarChart />

@@ -8,8 +8,8 @@ const initialState = {
     horizontalArray: [],
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
-    isSorted: isSorted,
-    saveParam: ""
+    sortParam: "",
+    sortDirection: "asc"
 }
 
 const ChartSlice = createSlice({
@@ -67,9 +67,6 @@ const ChartSlice = createSlice({
             state.verticalArrayDifficulty = newArrayDifficulty
             state.verticalArrayFun = newArrayFun
             //set the state to the new sorted arrays
-
-            state.isSorted = isSorted
-            //keep track of the sort state in (filer) component
 
             return state
 

@@ -39,6 +39,8 @@
 
 }
 
+
+
 .radio-wrapper {
     @extend .Switch-chart-wrapper;
 
@@ -50,6 +52,19 @@
 
 .sort-wrapper {
     @extend .Switch-chart-wrapper;
+
+    .tooltiptext-a {
+        margin-left: 5px;
+        font-size: 12px;
+        color: $green;
+    }
+
+    .tooltiptext-d {
+        @extend .tooltiptext-a;
+        margin-left: 0px;
+        font-size: 12px;
+        color: $blue;
+    }
 
     .sort-button {
         @extend .chart-button;

@@ -8,6 +8,7 @@ const Filters = () => {
 
     const dispatch = useDispatch()
 
+
     const handleChange = (e) => {
 
         dispatch(radioResult({ filter: e.target.value }))
@@ -15,9 +16,7 @@ const Filters = () => {
 
     const handleClick = (e) => {
 
-        const but = document.querySelector(".sort-button")
-        const x = but.innerHTML
-      
+
 
         switch (e.target.name) {
 
@@ -39,12 +38,6 @@ const Filters = () => {
                 const select = document.querySelector("select")
                 const selectedOption = select.options[select.selectedIndex]
                 dispatch(sortChart(selectedOption.value))
-
-                if (x === "Sort asc") {
-                    but.innerHTML = "Sort desc"
-                } else if (x === "Sort desc") {
-                    but.innerHTML = "Sort asc"
-                }
                 break;
         }
     }
