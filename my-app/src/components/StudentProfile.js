@@ -3,22 +3,21 @@ const StudentProfile = (profile) => {
 
     return (
         <div className='dropdown-content-profile'>
-            <ul className="dropdown-ul">
+            <ul className="dropdown-ul-profile">
                 {profile.data.map((item, index) => (
-                    <li key={index}>
-                        {item.firstName === profile.name ?
-                            <div className='profile-wrapper'>
-                                <p>First name: {item.firstName}</p>
-                                <p>Last name: {item.lastname}</p>
-                                <p>e-mail: {item.email}</p>
-                                <p>Gender: {item.gender}</p>
-                                <p>Age: {item.age}</p>
-                                <p>Id: {item.id}</p>
-                                <img src={item.photo} alt='profile picture' />
-                              
-                            </div>
-                            : null}
-                    </li>
+                    item.firstName === profile.name ?
+                        <li key={index}>
+                            <ul className='profile-wrapper'>
+                                <li>First name: {item.firstName}</li>
+                                <li>Last name: {item.lastname}</li>
+                                <li>e-mail: {item.email}</li>
+                                <li>Gender: {item.gender}</li>
+                                <li>Age: {item.age}</li>
+                                <li>Id: {item.id}</li>
+                                <span className="photo"><img src={item.photo} alt='profile picture' /></span>
+                            </ul>
+                        </li>
+                        : null
                 ))}
             </ul>
         </div >

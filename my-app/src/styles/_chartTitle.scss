@@ -1,0 +1,60 @@
+@import "./variables";
+
+.chart-title-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    //----------------------------
+    border: 0.7px solid $green;
+    border-radius: $border-radius;
+    //----------------------------
+    width: 400px;
+    height: 62px;
+    //----------------------------
+    padding-top: 0px;
+    line-height: 15px;
+    margin: 10px auto -10px auto;
+
+    hr {
+        background-color: $blue;
+        border: none;
+        //----------------------
+        margin-left: 16px;
+        height: 1px;
+        width: 200px;
+
+    }
+
+    &:hover .title-underline {
+        animation: lineScale 0.79s;
+        animation-fill-mode: forwards;
+    }
+
+    &:hover .dropdown-content-profile {
+        display: block;
+    }
+}
+
+.arrowDown {
+    margin-left: 5px;
+    height: 20px;
+    position: absolute;
+}
+
+.chart-title {
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
+}
+
+.chart-title-name {
+    @extend .chart-title;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.title-underline {
+    animation: fadeIn 1s;
+}

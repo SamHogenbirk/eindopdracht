@@ -1,144 +1,142 @@
 @import "./variables";
 
+
+@mixin animateDown {
+    animation: $grow-down;
+    transform-origin: top center;
+}
+
 .navbar {
     position: flex;
     top: 0;
     width: 100%;
     overflow: hidden;
-    font-family: Arial;
-
 
     .border-top {
-        animation: fadeIn 2s;
         position: relative;
         width: 100%;
         height: 5px;
         background: linear-gradient(90deg, $blue 50%, $green 50%);
+        animation: fadeIn 2s;
     }
 }
 
 .dropdown-list {
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    //-----------------------
     float: left;
     width: 50%;
     z-index: 1;
-
 }
 
 .dropdown-content-list {
-    animation: growDown 0.6s ease-in-out;
-    transform-origin: top center;
     display: none;
     position: absolute;
-
+    //-------------------------------------------------
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background-color: rgba(255, 255, 255, 0.85);
-
+    //-------------------------------------------------
     border: $borderBlue;
     border-top: none;
     border-radius: 0 0 10px 10px;
-
+    //-------------------------------------------------
     left: calc(100% / 4 - 200px);
     width: 400px;
-
     top: 5px;
-    z-index: 1;
-
+    z-index: 2;
+    //-------------------------------------------------
+    animation: $grow-down;
+    transform-origin: top center;
 
 }
 
 .dropdown-ul {
-
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-
+    //------------------------
     background-color: white;
     opacity: 0.8;
-
-    margin-left: 25px;
-    margin-bottom: 7px;
-    margin-top: 50px;
+    //------------------------
+    margin: 50px auto 7px 25px;
     list-style-type: none;
     padding: 4px;
-
+    //------------------------
     width: 350px;
     height: fit-content;
 }
 
 .li-item {
+    margin: 3px;
     padding: 3px;
+    //------------------
     min-width: 100px;
     width: fit-content;
-    margin: 3px;
-
-    // border: 1px solid rgb(243, 237, 237);
-    // border-radius: $border-radius;
 
     a {
 
         text-decoration: none;
         color: black;
-
+        //-----------------------
         font-size: $font-size;
         font-family: $font-family;
         font-weight: $font-weight;
-
         padding: 5px;
     }
 
     &:hover {
-        border-bottom: 1px solid $blue;
+        border-bottom: $borderBlue;
         margin-bottom: 2px;
         margin-left: 1px;
-
     }
 }
 
 .dropbtn-list {
-
-    animation: growDown 0.8s ease-in-out;
-    transform-origin: top center;
-    font-size: 16px;
-    border: $borderBlue;
-    font-size: 16px;
-    border-radius: 0 0 10px 10px;
+    font-size: $font-size;
     color: white;
-    padding: 10 0 10 0;
     background-color: $blue;
-    font-family: inherit;
+    //----------------------------
+    border: $borderBlue;
+    border-radius: 0 0 10px 10px;
+    //----------------------------
+    padding: 10 0 10 0;
     width: 400px;
     height: 30px;
+    //----------------------------
     cursor: pointer;
-
+    animation: $grow-down;
+    transform-origin: top center;
 }
 
 .home-button {
     font-style: bold;
-    color: white;
-    padding-left: 2px;
+    font-size: $font-size;
+    font-family: $font-family;
+    font-weight: $font-weight;
+
+    //----------------------------
     border-left: $borderBlue;
     border-right: $borderGreen;
     border-bottom: white;
     border-top: none;
     border-radius: 0 0 10px 10px;
+    //----------------------------
+    padding-left: 2px;
     height: 30px;
-    cursor: pointer;
-    font-size: $font-size;
-    font-family: $font-family;
-    font-weight: $font-weight;
-    border-radius: 0 0 10 10;
     width: 100px;
+    //----------------------------
+    color: white;
     background: linear-gradient(90deg, $blue 50%, $green 50%);
+    //----------------------------
+    cursor: pointer;
+    animation: $grow-down;
+    transform-origin: top center;
 
     &:hover {
-        color: rgba(235, 82, 82, 0.9);
         font-weight: 700;
         font-style: italic;
         border-color: rgba(235, 82, 82, 0.9);
@@ -146,12 +144,11 @@
 }
 
 .button-wrapper-home {
-    animation: fadeIn 0.8s;
     display: "block";
     position: absolute;
     left: calc(50% - 50px);
+    animation: fadeIn 0.8s;
 }
-
 
 .button-wrapper-list {
 
@@ -161,22 +158,22 @@
 }
 
 .dropdown-content-filter {
-
-    animation: growDown 0.6s ease-in-out;
-    transform-origin: top center;
     display: none;
     position: absolute;
-
+    z-index: 1;
+    //-------------------------------------------
     background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    //-------------------------------------------
     border: $borderGreen;
     border-top: none;
     border-radius: 0 0 10px 10px;
+    //-------------------------------------------
     right: calc(100% / 4 - 200px);
     width: 400px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     top: 5px;
-    z-index: 1;
-
+    //-------------------------------------------
+    @include animateDown;
 }
 
 .dropdown-filter {
@@ -193,32 +190,5 @@
 .button-wrapper-filter {
     &:hover .dropdown-content-filter {
         display: block;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes growDown {
-    0% {
-
-        transform: scaleY(0)
-    }
-
-    80% {
-
-        transform: scaleY(1.1)
-    }
-
-    100% {
-
-        transform: scaleY(1)
     }
 }

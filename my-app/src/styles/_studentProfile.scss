@@ -1,0 +1,54 @@
+@import "./variables";
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    //---------------------
+    width: 380px;
+    height: fit-content;
+    //---------------------
+    list-style: none;
+
+    li {
+        margin: 5px;
+    }
+
+    .photo {
+        position: absolute;
+        //-----------------
+        margin-top: -30px;
+        margin-left: 230px;
+        padding: 0;
+        //------------------
+        height: fit-content;
+        width: auto;
+    }
+
+    img {
+        height: 150px;
+        width: auto;
+    }
+}
+
+.dropdown-ul-profile {
+    @extend .dropdown-ul;
+    //------------------
+    text-align: center;
+
+}
+
+.dropdown-content-profile {
+    @extend .dropdown-content-list;
+    //---------------------------------
+    display: none;
+    //---------------------------------
+    border: 2px solid $blue;
+    border-radius: $border-radius;
+    //---------------------------------
+    left: 0px;
+    top: 50px;
+    //---------------------------------
+    animation: rotateY 1s ease-in-out;
+    transform-origin: top center;
+}
