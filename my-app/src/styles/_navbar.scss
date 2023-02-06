@@ -74,7 +74,7 @@
     margin: 3px;
     padding: 3px;
     //------------------
-    min-width: 100px;
+    min-width: 200px;
     width: fit-content;
 
     a {
@@ -191,4 +191,10 @@
     &:hover .dropdown-content-filter {
         display: block;
     }
+}
+
+.student-checkbox {
+    float: right;
+    margin-top: 4px;
+
 }

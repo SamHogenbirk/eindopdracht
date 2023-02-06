@@ -2,9 +2,6 @@ import { createSlice, current } from "@reduxjs/toolkit";
 import studentData from "../app/studentData";
 import mockData from "../app/mockData";
 
-// addStudent: (state, action) => { initialState.studentData.push(action.payload) },
-// removeStudent: (state, action) => { initialState.studentData = initialState.studentData.filter((student) => student.id !== action.payload.id) },
-
 const initialState = {
     all: studentData,
     ar: [],
@@ -25,19 +22,8 @@ const DataSlice = createSlice({
             state.all = [...studentData]
             const name = action.payload
             state.all = state.all.filter((student) => !name.includes(student.studentName))
-            // console.log(current(state))
 
             return state
-
-        },
-
-        uniqueArray: (state, action) => {
-
-            // state.ar = []
-            // const unique = [...new Set(studentData.map(item => item[action.payload]))]
-            // state.ar.push(unique)
-
-            // return state
 
         },
 
@@ -51,7 +37,7 @@ const DataSlice = createSlice({
                     const newItem = {
                         id: mockItem.id,
                         firstName: item,
-                        lastname: mockItem.last_name,
+                        lastName: mockItem.last_name,
                         age: mockItem.age,
                         email: mockItem.email,
                         gender: mockItem.gender,
@@ -70,11 +56,11 @@ const DataSlice = createSlice({
 
             // state.combinedStudent =
             //     [...new Map(state.combinedStudent.map(item => [item.id, item])).values()]
-            // //remove duplicates
+            // //remove duplicates due strictmode
 
         },
     }
 })
 
-export const { filterStudent, sortList, uniqueArray, addMockData } = DataSlice.actions
+export const { filterStudent, sortList, addMockData } = DataSlice.actions
 export default DataSlice.reducer

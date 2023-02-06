@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-// import arrowDown from '../..img/arrowDown.png'
-
-
 
 const ChartTitle = ({ title, subtitle, data }) => {
 
@@ -10,11 +7,9 @@ const ChartTitle = ({ title, subtitle, data }) => {
     //subtitle = student name or assignment 
     //data = "assignment" or "student" (average rating)
 
-
     let name = ""
     data ? name = data : name = subtitle
 
-    console.log(subtitle)
     return (
 
         <div className='title-container'>

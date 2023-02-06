@@ -59,7 +59,7 @@
 .li-item {
   margin: 3px;
   padding: 3px;
-  min-width: 100px;
+  min-width: 200px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -161,6 +161,11 @@
   display: block;
 }
 
+.student-checkbox {
+  float: right;
+  margin-top: 4px;
+}
+
 .bar-chart, .line-chart {
   margin: 0px;
   padding: 5px;
@@ -176,11 +181,6 @@
 .chart-wrapper {
   position: relative;
   overflow-x: scroll;
-}
-
-.student-checkbox {
-  float: right;
-  margin-left: 10px;
 }
 
 .Switch-chart-wrapper, .sort-wrapper, .radio-wrapper {

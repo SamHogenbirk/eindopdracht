@@ -9,7 +9,7 @@ const StudentProfile = (profile) => {
                         <li key={index}>
                             <ul className='profile-wrapper'>
                                 <li>First name: {item.firstName}</li>
-                                <li>Last name: {item.lastname}</li>
+                                <li>Last name: {item.lastName}</li>
                                 <li>e-mail: {item.email}</li>
                                 <li>Gender: {item.gender}</li>
                                 <li>Age: {item.age}</li>

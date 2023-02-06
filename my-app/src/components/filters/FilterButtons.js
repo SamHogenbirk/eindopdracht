@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const FilterButtons = ({ handleChange, handleClick, data }) => {
+
+    const filter = useSelector(state => state.filter.filter)
 
     const render = (data) => {
 
@@ -13,7 +16,7 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
 
                             <label> Assignment:
                                 <input
-                                    defaultChecked="checked"
+                                    checked={filter === "assignment"}
                                     onChange={handleChange}
                                     type="radio"
                                     name="chartType"
@@ -23,6 +26,7 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
 
                             <label> Student:
                                 <input
+                                    checked={filter === "student"}
                                     onChange={handleChange}
                                     type="radio"
                                     name="chartType"
@@ -34,8 +38,6 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                 )
 
             case "sort":
-
-
 
                 return (
 
@@ -73,7 +75,6 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                         </button>
                     </div>
                 )
-
         }
 
     }

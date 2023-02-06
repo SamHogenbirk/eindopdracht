@@ -7,16 +7,13 @@ import { sortChart } from "../../features/ChartSlice";
 const Filters = () => {
 
     const dispatch = useDispatch()
-
-
+ 
     const handleChange = (e) => {
 
         dispatch(radioResult({ filter: e.target.value }))
     }
 
     const handleClick = (e) => {
-
-
 
         switch (e.target.name) {
 

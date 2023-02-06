@@ -9,8 +9,9 @@ const initialState = {
     verticalArrayDifficulty: [],
     verticalArrayFun: [],
     sortParam: "",
-    sortDirection: "asc"
+    averagePerStudent: [],
 }
+
 
 const ChartSlice = createSlice({
     name: "chart",
@@ -18,6 +19,21 @@ const ChartSlice = createSlice({
     reducers: {
 
         chartData: (state, action) => {
+
+            if (action.payload.horizontal < state.horizontalArray) {
+                action.payload.horizontal.map((item, i) => {
+
+                    const newItem = {
+                        difficulty: action.payload.verticalD[i],
+                        fun: action.payload.verticalF[i],
+                        category: item
+                    }
+                    state.averagePerStudent.push(newItem)
+                })
+            }
+
+            state.averagePerStudent = [...new Map(state.averagePerStudent.map(item => [item.category, item])).values()]
+            //remove duplicates
 
             state.horizontalArray = action.payload.horizontal
             state.verticalArrayDifficulty = action.payload.verticalD

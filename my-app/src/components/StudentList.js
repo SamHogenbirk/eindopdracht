@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { filterStudent } from '../features/DataSlice'
-import { useSelector } from "react-redux"
+import { addMockData, filterStudent } from '../features/DataSlice'
+import { useSelector, useDispatch } from "react-redux"
 
 const StudentList = () => {
 
     const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
     const dispatch = useDispatch()
-    const array = (useSelector((state) => state.data.studentName))
-    const test = useSelector((state) => state.data.combinedStudent)
+    const x = (useSelector((state) => state.data.studentName))
+    const array = useSelector((state) => state.data.combinedStudent)
 
-    // console.log(test)    
-
+    useEffect(() => {
+        dispatch(addMockData())
+    }, [])
 
     const [names, setNames] = useState([])
 
@@ -29,19 +29,19 @@ const StudentList = () => {
 
         <div className='dropdown-content-list' >
             <ul className='dropdown-ul'>
-
                 {array.map((item) =>
-                    <li className="li-item" key={item} >
-                        <Link to={`/student/${item}`}>{item} </Link>
-                        <label>
+
+                    <li className="li-item" key={item.id} >
+                        <Link to={`/student/${item.firstName}`}>{item.firstName} {item.lastName} </Link>
+                        <span className='checkbox-wrapper'>
                             <input
                                 id={id()}
                                 className="student-checkbox"
                                 type="checkbox"
                                 defaultChecked={true}
-                                value={item}
+                                value={item.firstName}
                                 onChange={handleChange} />
-                        </label>
+                        </span>
                     </li>)}
             </ul>
         </div >
