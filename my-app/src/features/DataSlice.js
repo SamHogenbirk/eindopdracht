@@ -4,10 +4,10 @@ import mockData from "../app/mockData";
 
 const initialState = {
     all: studentData,
-    ar: [],
     assignment: [...new Set(studentData.map(item => item.assignment))],
     studentName: [...new Set(studentData.map(item => item.studentName))],
-    combinedStudent: []
+    combinedStudent: [],
+    filtered: "assignment",
 
 }
 
@@ -16,6 +16,11 @@ const DataSlice = createSlice({
     initialState,
 
     reducers: {
+        radioResult: (state, action) => {
+
+            state.filtered = action.payload
+            return state
+        },
 
         filterStudent: (state, action) => {
 
@@ -50,17 +55,16 @@ const DataSlice = createSlice({
 
                 return state
             } else {
-
                 return state
             }
 
             // state.combinedStudent =
             //     [...new Map(state.combinedStudent.map(item => [item.id, item])).values()]
-            // //remove duplicates due strictmode
+            // //remove duplicates due to strictmode
 
         },
     }
 })
 
-export const { filterStudent, sortList, addMockData } = DataSlice.actions
+export const { filterStudent, addMockData, radioResult } = DataSlice.actions
 export default DataSlice.reducer

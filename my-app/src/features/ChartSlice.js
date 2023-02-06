@@ -1,5 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-
+import { createSlice } from "@reduxjs/toolkit";
 
 let isSorted = false
 
@@ -10,6 +9,7 @@ const initialState = {
     verticalArrayFun: [],
     sortParam: "",
     averagePerStudent: [],
+   
 }
 
 
@@ -20,7 +20,7 @@ const ChartSlice = createSlice({
 
         chartData: (state, action) => {
 
-            if (action.payload.horizontal < state.horizontalArray) {
+            if (action.payload.horizontal < state.horizontalArray && state.averagePerStudent.length === 0) {
                 action.payload.horizontal.map((item, i) => {
 
                     const newItem = {
@@ -51,6 +51,7 @@ const ChartSlice = createSlice({
             if (sortBy !== state.sortParam) {
                 isSorted = false
             } else if (action.payload === "") {
+                alert("Please select a category to sort by")
                 return state
             }
             state.sortParam = sortBy

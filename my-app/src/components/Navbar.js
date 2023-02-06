@@ -20,7 +20,6 @@ const Navbar = () => {
                     </div>
                 </span>
 
-
                 <span className="button-wrapper-home" style={isHome ? { display: "none" } : { display: "block" }}  >
                     <Link to="/">
                         <button

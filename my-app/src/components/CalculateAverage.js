@@ -1,13 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { chartData } from "../features/ChartSlice"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const CalculateAverage = (props) => {
 
+    //props from MainPage & studen
+
     const dispatch = useDispatch()
     const data = useSelector((state) => state.data.all)
-    const category = (input) => [...new Set(data.map(item => item[input]))]
     const array = useSelector((state) => state.data.assignment)
+
+
+    const [hasRun, setHasRun] = useState(false)
+
+    const category = (input) => [...new Set(data.map(item => item[input]))]
 
     const averageRating = (inputA, inputB) => { //inputA = fun/difficult, inputB = assignment/studentName
         const averageRating = category(inputB).map((item) => {
@@ -55,12 +61,15 @@ const CalculateAverage = (props) => {
         } else if (props === "studentAverage") {
 
             onStudent()
+            setHasRun(true)
 
         } else {
 
-            onStudent()
+            if (hasRun === false) {
+                onStudent()
+            } //only run once
 
-            const name = props[1]
+            const name = props
             const ratingPerStudent = (data, name) => data.filter((data) => data.studentName === name)
 
             dispatch(chartData({
@@ -70,7 +79,7 @@ const CalculateAverage = (props) => {
             }))
         }
         // eslint-disable-next-line
-    }, [props])
+    }, [props, data])
 
     return (
         <>

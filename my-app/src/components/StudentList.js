@@ -5,10 +5,9 @@ import { useSelector, useDispatch } from "react-redux"
 
 const StudentList = () => {
 
-    const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
     const dispatch = useDispatch()
-    const x = (useSelector((state) => state.data.studentName))
     const array = useSelector((state) => state.data.combinedStudent)
+    const id = () => parseInt(Math.floor(Math.random() * Date.now()).toString().replace(".", ""))
 
     useEffect(() => {
         dispatch(addMockData())
@@ -23,7 +22,7 @@ const StudentList = () => {
         setNames(names)
         dispatch(filterStudent(names))
 
-    }//change list of names
+    }//change list of names removed from chart
 
     return (
 

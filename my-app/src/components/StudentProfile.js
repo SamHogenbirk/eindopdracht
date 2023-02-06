@@ -2,16 +2,17 @@ import { useSelector } from "react-redux"
 
 const StudentProfile = (profile) => {
 
+    const style = "1px solid red"
+
     const average = useSelector((state) => state.chart.averagePerStudent)
     const ratings = average
         .filter((item) => item.category === profile.name)
         .map(item => {
             return (
                 <div className="ratings-wrapper" key={item}>
-                    <p className="ratings"> Difficulty: {item.difficulty}</p>
-
-                    <p className="ratings"> Fun: {item.fun}</p>
-                </div>
+                    <p style={{ border: item.difficulty > 4 && style }} className="ratings"> Difficulty: {item.difficulty}</p>
+                    <p style={{ border: item.fun <= 2.5 && style }} className="ratings"> Fun: {item.fun}</p>
+                </div >
             )
         })
 
@@ -24,7 +25,7 @@ const StudentProfile = (profile) => {
                             <ul className='profile-wrapper'>
                                 <li>First name: {item.firstName}</li>
                                 <li>Last name: {item.lastName}</li>
-                                <li>e-mail: {item.email}</li>
+                                <li>E-mail: {item.email}</li>
                                 <li>Gender: {item.gender}</li>
                                 <li>Age: {item.age}</li>
                                 <li>Id: {item.id}</li>

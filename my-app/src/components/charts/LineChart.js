@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
 import { useSelector } from "react-redux"
 
-function LineChart(props) {
+function LineChart() {
 
     const chartData = useSelector((state) => state.chart)
 
@@ -14,7 +14,7 @@ function LineChart(props) {
         plugins: {
             display: true,
             legend: {
-                // fillStyle: "rgb(66, 135, 245)",
+
                 onClick: (e, legendItem, legend) => {
                     const data = legend.legendItems.map(item => item.text)
                     const index = data.indexOf(legendItem.text)
@@ -72,7 +72,6 @@ function LineChart(props) {
 
         ]
     }
-
 
     return (
         <div className="chart">

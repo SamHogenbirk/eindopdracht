@@ -18,7 +18,7 @@
         position: absolute;
         //-----------------
         margin-top: -30px;
-        margin-left: 230px;
+        margin-left: 240px;
         padding: 0;
         //------------------
         height: fit-content;
@@ -36,15 +36,21 @@
 
         :nth-child(1) {
             color: $blue;
+            border: $borderBlue;
         }
 
         :nth-child(2) {
             color: $green;
+            border: $borderGreen;
+            margin-top: 5px;
         }
     }
 
     .ratings {
         line-height: 17px;
+        padding: 4px;
+        border-radius: $border-radius;
+        width: 130px;
     }
 }
 

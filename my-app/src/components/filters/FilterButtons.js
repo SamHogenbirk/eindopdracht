@@ -1,9 +1,9 @@
-import React from "react";
 import { useSelector } from "react-redux";
 
 const FilterButtons = ({ handleChange, handleClick, data }) => {
 
-    const filter = useSelector(state => state.filter.filter)
+    const isFiltered = useSelector(state => state.data.filtered)
+    // console.log(data)
 
     const render = (data) => {
 
@@ -13,10 +13,9 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                 return (
                     <div className="radio-button">
                         <label> Average per:
-
                             <label> Assignment:
                                 <input
-                                    checked={filter === "assignment"}
+                                    checked={isFiltered === "assignment"}
                                     onChange={handleChange}
                                     type="radio"
                                     name="chartType"
@@ -26,7 +25,7 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
 
                             <label> Student:
                                 <input
-                                    checked={filter === "student"}
+                                    checked={isFiltered === "student"}
                                     onChange={handleChange}
                                     type="radio"
                                     name="chartType"
@@ -51,7 +50,6 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                         </select>
                         <label>
                             <button
-                                id="x"
                                 className="sort-button"
                                 name="sortButton"
                                 value="sort" onClick={handleClick}>
@@ -63,7 +61,6 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
 
                 )
 
-
             case "switchChart":
                 return (
                     <div className="Switch-chart-wrapper">
@@ -71,9 +68,23 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
                             className="chart-button"
                             name="switch"
                             onClick={handleClick}>
-                            switch chart
+                            Line chart
+                        </button>
+
+                    </div>
+                )
+
+            case "tableView":
+                return (
+                    <div className="table-button-wrapper">
+                        <button
+                            className="table-button"
+                            name="table"
+                            onClick={handleClick}>
+                            Table
                         </button>
                     </div>
+
                 )
         }
 
