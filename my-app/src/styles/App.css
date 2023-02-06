@@ -313,6 +313,19 @@
   height: 150px;
   width: auto;
 }
+.profile-wrapper .ratings-wrapper {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.profile-wrapper .ratings-wrapper :nth-child(1) {
+  color: rgb(66, 135, 245);
+}
+.profile-wrapper .ratings-wrapper :nth-child(2) {
+  color: rgb(182, 245, 66);
+}
+.profile-wrapper .ratings {
+  line-height: 17px;
+}
 
 .dropdown-ul-profile {
   text-align: center;

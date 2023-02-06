@@ -29,13 +29,29 @@
         height: 150px;
         width: auto;
     }
+
+    .ratings-wrapper {
+        margin-top: 5px;
+        margin-left: 10px;
+
+        :nth-child(1) {
+            color: $blue;
+        }
+
+        :nth-child(2) {
+            color: $green;
+        }
+    }
+
+    .ratings {
+        line-height: 17px;
+    }
 }
 
 .dropdown-ul-profile {
     @extend .dropdown-ul;
     //------------------
     text-align: center;
-
 }
 
 .dropdown-content-profile {
