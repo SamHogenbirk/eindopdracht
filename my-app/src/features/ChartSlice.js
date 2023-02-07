@@ -9,7 +9,6 @@ const initialState = {
     verticalArrayFun: [],
     sortParam: "",
     averagePerStudent: [],
-   
 }
 
 
@@ -30,7 +29,7 @@ const ChartSlice = createSlice({
                     }
                     state.averagePerStudent.push(newItem)
                 })
-            }
+            }//save average per student in state
 
             state.averagePerStudent = [...new Map(state.averagePerStudent.map(item => [item.category, item])).values()]
             //remove duplicates

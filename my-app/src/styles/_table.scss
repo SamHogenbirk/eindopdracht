@@ -29,6 +29,7 @@ table {
 
     tr {
         border: $borderGreen;
+
     }
 
     th {
@@ -36,12 +37,13 @@ table {
         font-family: $font-family;
         font-weight: $font-weight;
         padding: 12px 8px;
+
         text-decoration: underline;
         border-bottom: $borderBlue;
     }
 
     td {
-        padding: 12px 8px;
+        padding: 6px 4px;
     }
 
     th {

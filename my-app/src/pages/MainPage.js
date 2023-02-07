@@ -1,12 +1,11 @@
 import Navbar from "../components/Navbar"
 import BarChart from "../components/charts/BarChart"
 import LineChart from "../components/charts/LineChart"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useEffect } from "react"
 import ChartTitle from "../components/charts/ChartTitle"
 import CalculateAverage from "../components/CalculateAverage"
 import TableView from "../components/TableView"
-
 
 const MainPage = () => {
 
@@ -14,7 +13,6 @@ const MainPage = () => {
     isFiltered === "assignment" ? CalculateAverage("assignmentAverage") : CalculateAverage("studentAverage")
 
     useEffect(() => {
-
         document.getElementById("line").classList.remove('title-underline')
     }, [])
 

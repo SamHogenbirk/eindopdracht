@@ -4,12 +4,11 @@ import { useEffect, useState } from 'react'
 
 const CalculateAverage = (props) => {
 
-    //props from MainPage & studen
+    //props from MainPage & student
 
     const dispatch = useDispatch()
     const data = useSelector((state) => state.data.all)
     const array = useSelector((state) => state.data.assignment)
-
 
     const [hasRun, setHasRun] = useState(false)
 
@@ -80,15 +79,6 @@ const CalculateAverage = (props) => {
         }
         // eslint-disable-next-line
     }, [props, data])
-
-    return (
-        <>
-            <div>
-                {/* {averageRating("fun", "assignment")} */}
-            </div>
-        </>
-    )
-
 }
 
 export default CalculateAverage

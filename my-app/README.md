@@ -2,21 +2,35 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Please install
-
+## Please install additional:
 
 Chart JS v2:
 npm install --save chart.js react-chartjs-2 
 
 Redux@toolkit:
-..
+npx create-react-app my-app --template redux 
+
+or 
+
+npm install @reduxjs/toolkit
 
 React Router DOM:
 ..
 
 ## Use tips
 
-- click on the legend item in the chart to hide or display the data.
+- Click on the legend item in the chart to hide or display the data.
+- After selected; hover over student name to show profile
+
+##  Assignment notes:
+
+- Assignment sometimes unclear of what to show in chart. Therefor did the average for all students.
+- I set the checkboxes on "checked" as default and uncheck if students needs excludng. Seemed more logical to me
+- As shown above, chart legend is clickable instead of a checkbox
+- Not sure what is ment by:" Add sort by data column" table can be sorted just as charts...
+- Just saw I forgot to add  phonenumber to mockdata, tehrefor random nummer in studentProfile
+ 
+
 
 ## Available Scripts
 

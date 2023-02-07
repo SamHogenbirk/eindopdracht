@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import studentData from "../app/studentData";
 import mockData from "../app/mockData";
 
@@ -58,9 +58,9 @@ const DataSlice = createSlice({
                 return state
             }
 
-            // state.combinedStudent =
-            //     [...new Map(state.combinedStudent.map(item => [item.id, item])).values()]
-            // //remove duplicates due to strictmode
+
+            // state.combinedStudent =[...new Map(state.combinedStudent.map(item => [item.id, item])).values()]
+            // remove duplicates due to strictmode
 
         },
     }

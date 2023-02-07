@@ -28,7 +28,10 @@ function BarChart() {
                             borderRadius: 5,
                             text: dataset.label,
                             strokeStyle: "white",
-                            fillStyle: dataset.backgroundColor[i] === "red" ? "rgb(66, 135, 245)" : dataset.backgroundColor[i],
+                            fillStyle: dataset.label === "Difficulty rating" ?
+                                dataset.backgroundColor
+                                = "rgb(66, 135, 245)"
+                                : "rgb(182, 245, 66)",
                             hidden: !chart.isDatasetVisible(i),
                             lineCap: dataset.borderCapStyle,
                         }))
@@ -54,7 +57,7 @@ function BarChart() {
                 label: "Difficulty rating",
                 data: chartData.verticalArrayDifficulty, //vertical axis
                 backgroundColor: chartData.verticalArrayDifficulty
-                    .map(item => item > 3.5 || item < 1 ? "red" : "rgb(66, 135, 245)"),
+                    .map(item => item >= 4 || item < 1 ? "red" : "rgb(66, 135, 245)"),
 
                 borderWidth: 1,
                 barPercentage: 1,

@@ -1,6 +1,24 @@
 @import "./variables";
 
+.dropdown-content-profile {
+    @extend .dropdown-content-list;
+    //---------------------------------
+    display: none;
+    background-color: white;
+    //---------------------------------
+    border: 2px solid $blue;
+    border-radius: $border-radius;
+    //---------------------------------
+    padding: 0px;
+    left: 0px;
+    top: 50px;
+    //---------------------------------
+    animation: rotateY 1s ease-in-out;
+    transform-origin: top center;
+}
+
 .profile-wrapper {
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -58,19 +76,4 @@
     @extend .dropdown-ul;
     //------------------
     text-align: center;
-}
-
-.dropdown-content-profile {
-    @extend .dropdown-content-list;
-    //---------------------------------
-    display: none;
-    //---------------------------------
-    border: 2px solid $blue;
-    border-radius: $border-radius;
-    //---------------------------------
-    left: 0px;
-    top: 50px;
-    //---------------------------------
-    animation: rotateY 1s ease-in-out;
-    transform-origin: top center;
 }

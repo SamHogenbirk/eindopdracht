@@ -24,12 +24,13 @@ const Filters = () => {
         const butTable = document.querySelector(".table-button")
         const butChart = document.querySelector(".chart-button")
 
+
         switch (e.target.name) {
 
             case "switch":
 
-
                 if (active.bar === false) {
+
                     table.style.display = "none"
                     barChart.style.display = "block"
                     lineChart.style.display = "none"
@@ -50,6 +51,7 @@ const Filters = () => {
             case "table":
 
                 if (active.table === false) {
+
                     table.style.display = "block"
                     barChart.style.display = "none"
                     lineChart.style.display = "none"
@@ -74,7 +76,6 @@ const Filters = () => {
                 dispatch(sortChart(selectedOption.value))
                 break;
         }
-
     }
 
     return (
@@ -108,7 +109,6 @@ const Filters = () => {
                     </li>
                 </ul>
             </div>
-
         </>
     )
 }

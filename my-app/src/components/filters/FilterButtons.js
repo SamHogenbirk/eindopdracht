@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 const FilterButtons = ({ handleChange, handleClick, data }) => {
 
     const isFiltered = useSelector(state => state.data.filtered)
-    // console.log(data)
 
     const render = (data) => {
 
@@ -87,9 +86,7 @@ const FilterButtons = ({ handleChange, handleClick, data }) => {
 
                 )
         }
-
     }
-
 
     return (
         <>
